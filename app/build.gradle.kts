@@ -45,6 +45,7 @@ dependencies {
     implementation(projects.feature.adfgvx)
     implementation(projects.feature.bifid)
     implementation(projects.feature.trifid)
+    implementation(projects.feature.foursquare)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
