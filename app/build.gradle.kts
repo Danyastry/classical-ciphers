@@ -38,6 +38,7 @@ dependencies {
     implementation(projects.feature.playfair)
     implementation(projects.feature.hill)
     implementation(projects.feature.railfence)
+    implementation(projects.feature.columnar)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
