@@ -10,7 +10,7 @@ class BeaufortFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(BeaufortFeature.info.id).isEqualTo("beaufort")
-        assertThat(BeaufortFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(BeaufortFeature.info.category).isEqualTo(AlgorithmCategory.POLYALPHABETIC)
         assertThat(BeaufortFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

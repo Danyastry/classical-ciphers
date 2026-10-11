@@ -10,7 +10,7 @@ class RailFenceFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(RailFenceFeature.info.id).isEqualTo("rail-fence")
-        assertThat(RailFenceFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(RailFenceFeature.info.category).isEqualTo(AlgorithmCategory.TRANSPOSITION)
         assertThat(RailFenceFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

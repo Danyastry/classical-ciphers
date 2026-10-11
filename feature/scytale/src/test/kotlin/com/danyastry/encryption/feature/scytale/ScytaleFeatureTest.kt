@@ -10,7 +10,7 @@ class ScytaleFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(ScytaleFeature.info.id).isEqualTo("scytale")
-        assertThat(ScytaleFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(ScytaleFeature.info.category).isEqualTo(AlgorithmCategory.TRANSPOSITION)
         assertThat(ScytaleFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

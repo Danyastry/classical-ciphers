@@ -10,7 +10,7 @@ class TrifidFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(TrifidFeature.info.id).isEqualTo("trifid")
-        assertThat(TrifidFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(TrifidFeature.info.category).isEqualTo(AlgorithmCategory.TABLE_BASED)
         assertThat(TrifidFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

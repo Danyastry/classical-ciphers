@@ -10,7 +10,7 @@ class CaesarFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(CaesarFeature.info.id).isEqualTo("caesar")
-        assertThat(CaesarFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(CaesarFeature.info.category).isEqualTo(AlgorithmCategory.SUBSTITUTION)
         assertThat(CaesarFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

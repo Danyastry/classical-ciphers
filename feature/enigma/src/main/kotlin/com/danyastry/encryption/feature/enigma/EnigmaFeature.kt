@@ -13,9 +13,9 @@ object EnigmaFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "enigma",
         name = "Enigma I",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.MACHINE,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "WWII German rotor machine with rings, plugboard and the double-stepping middle rotor",
+        summary = "German WWII rotor machine",
     )
 
     @Composable

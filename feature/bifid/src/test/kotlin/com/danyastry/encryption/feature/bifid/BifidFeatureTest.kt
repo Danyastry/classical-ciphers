@@ -10,7 +10,7 @@ class BifidFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(BifidFeature.info.id).isEqualTo("bifid")
-        assertThat(BifidFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(BifidFeature.info.category).isEqualTo(AlgorithmCategory.TABLE_BASED)
         assertThat(BifidFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

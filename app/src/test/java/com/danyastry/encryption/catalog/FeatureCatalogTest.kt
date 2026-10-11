@@ -22,24 +22,24 @@ class FeatureCatalogTest {
 
     @Test
     fun `groups features into sections ordered by category`() {
-        val aes = feature("aes-gcm", "AES-GCM", AlgorithmCategory.SYMMETRIC)
-        val caesar = feature("caesar", "Caesar", AlgorithmCategory.CLASSICAL)
-        val sha = feature("sha-256", "SHA-256", AlgorithmCategory.HASH)
+        val railFence = feature("rail-fence", "Rail fence", AlgorithmCategory.TRANSPOSITION)
+        val caesar = feature("caesar", "Caesar", AlgorithmCategory.SUBSTITUTION)
+        val enigma = feature("enigma", "Enigma", AlgorithmCategory.MACHINE)
 
-        val catalog = FeatureCatalog(listOf(sha, aes, caesar))
+        val catalog = FeatureCatalog(listOf(enigma, railFence, caesar))
 
         assertThat(catalog.sections.map { it.category }).containsExactly(
-            AlgorithmCategory.CLASSICAL,
-            AlgorithmCategory.SYMMETRIC,
-            AlgorithmCategory.HASH,
+            AlgorithmCategory.SUBSTITUTION,
+            AlgorithmCategory.TRANSPOSITION,
+            AlgorithmCategory.MACHINE,
         ).inOrder()
     }
 
     @Test
     fun `sorts features inside a section by name`() {
-        val vigenere = feature("vigenere", "Vigenère", AlgorithmCategory.CLASSICAL)
-        val atbash = feature("atbash", "Atbash", AlgorithmCategory.CLASSICAL)
-        val caesar = feature("caesar", "Caesar", AlgorithmCategory.CLASSICAL)
+        val vigenere = feature("vigenere", "Vigenère", AlgorithmCategory.SUBSTITUTION)
+        val atbash = feature("atbash", "Atbash", AlgorithmCategory.SUBSTITUTION)
+        val caesar = feature("caesar", "Caesar", AlgorithmCategory.SUBSTITUTION)
 
         val catalog = FeatureCatalog(listOf(vigenere, atbash, caesar))
 
@@ -48,7 +48,7 @@ class FeatureCatalogTest {
 
     @Test
     fun `finds feature by id`() {
-        val caesar = feature("caesar", "Caesar", AlgorithmCategory.CLASSICAL)
+        val caesar = feature("caesar", "Caesar", AlgorithmCategory.SUBSTITUTION)
 
         val catalog = FeatureCatalog(listOf(caesar))
 
@@ -59,8 +59,8 @@ class FeatureCatalogTest {
 
     @Test
     fun `rejects duplicate ids`() {
-        val first = feature("caesar", "Caesar", AlgorithmCategory.CLASSICAL)
-        val second = feature("caesar", "Caesar shift", AlgorithmCategory.CLASSICAL)
+        val first = feature("caesar", "Caesar", AlgorithmCategory.SUBSTITUTION)
+        val second = feature("caesar", "Caesar shift", AlgorithmCategory.SUBSTITUTION)
 
         val error = assertThrows(IllegalArgumentException::class.java) {
             FeatureCatalog(listOf(first, second))
@@ -69,17 +69,41 @@ class FeatureCatalogTest {
     }
 
     @Test
+    fun `lists each security status once in enum order`() {
+        val broken = feature("caesar", "Caesar", AlgorithmCategory.SUBSTITUTION, SecurityStatus.BROKEN)
+        val pad = feature("one-time-pad", "One-time pad", AlgorithmCategory.POLYALPHABETIC, SecurityStatus.PERFECT_SECRECY)
+        val alsoBroken = feature("atbash", "Atbash", AlgorithmCategory.SUBSTITUTION, SecurityStatus.BROKEN)
+
+        val catalog = FeatureCatalog(listOf(broken, pad, alsoBroken))
+
+        assertThat(catalog.statuses).containsExactly(SecurityStatus.PERFECT_SECRECY, SecurityStatus.BROKEN).inOrder()
+    }
+
+    @Test
+    fun `registry groups every cipher into one of the five families`() {
+        val catalog = FeatureCatalog(FeatureRegistry.features)
+
+        assertThat(catalog.sections.map { it.category }).containsExactlyElementsIn(AlgorithmCategory.entries).inOrder()
+        assertThat(catalog.sections.sumOf { it.entries.size }).isEqualTo(FeatureRegistry.features.size)
+    }
+
+    @Test
     fun `registry has unique ids`() {
         FeatureCatalog(FeatureRegistry.features)
     }
 
-    private fun feature(id: String, name: String, category: AlgorithmCategory): FeatureEntry =
+    private fun feature(
+        id: String,
+        name: String,
+        category: AlgorithmCategory,
+        status: SecurityStatus = SecurityStatus.RECOMMENDED,
+    ): FeatureEntry =
         object : FeatureEntry {
             override val info = AlgorithmInfo(
                 id = id,
                 name = name,
                 category = category,
-                securityStatus = SecurityStatus.RECOMMENDED,
+                securityStatus = status,
                 summary = "$name summary",
             )
 

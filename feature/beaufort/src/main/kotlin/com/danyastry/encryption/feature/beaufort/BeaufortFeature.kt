@@ -13,9 +13,9 @@ object BeaufortFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "beaufort",
         name = "Beaufort cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.POLYALPHABETIC,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Subtracts each letter from a repeating keyword, so encrypting twice gives the plaintext back",
+        summary = "Key minus letter, works both ways",
     )
 
     @Composable

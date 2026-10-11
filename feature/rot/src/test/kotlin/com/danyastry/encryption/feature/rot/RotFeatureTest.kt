@@ -10,7 +10,7 @@ class RotFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(RotFeature.info.id).isEqualTo("rot13-rot47")
-        assertThat(RotFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(RotFeature.info.category).isEqualTo(AlgorithmCategory.SUBSTITUTION)
         assertThat(RotFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

@@ -13,9 +13,9 @@ object AutokeyFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "autokey",
         name = "Autokey cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.POLYALPHABETIC,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Vigenère variant whose key is a short primer followed by the plaintext itself",
+        summary = "The message extends its own key",
     )
 
     @Composable

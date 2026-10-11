@@ -35,7 +35,7 @@ class AlgorithmInfoTest {
     private fun algorithmInfo(id: String = "caesar", name: String = "Caesar") = AlgorithmInfo(
         id = id,
         name = name,
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.SUBSTITUTION,
         securityStatus = SecurityStatus.BROKEN,
         summary = "Shift cipher",
     )

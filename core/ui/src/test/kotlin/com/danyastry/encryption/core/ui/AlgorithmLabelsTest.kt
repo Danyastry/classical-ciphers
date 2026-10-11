@@ -15,6 +15,16 @@ class AlgorithmLabelsTest {
     }
 
     @Test
+    fun `every category has its own description`() {
+        assertThat(AlgorithmCategory.entries.map { it.descriptionRes }).containsNoDuplicates()
+    }
+
+    @Test
+    fun `every security status has its own description`() {
+        assertThat(SecurityStatus.entries.map { it.descriptionRes }).containsNoDuplicates()
+    }
+
+    @Test
     fun `every security status has its own label`() {
         val labels = SecurityStatus.entries.map { it.labelRes }
 

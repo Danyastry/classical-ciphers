@@ -13,9 +13,9 @@ object RotFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "rot13-rot47",
         name = "ROT13 / ROT47",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.SUBSTITUTION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Keyless rotations that undo themselves when applied twice",
+        summary = "Shift by 13 or 47, no key",
     )
 
     @Composable

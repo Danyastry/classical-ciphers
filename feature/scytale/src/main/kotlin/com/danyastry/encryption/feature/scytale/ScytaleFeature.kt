@@ -13,9 +13,9 @@ object ScytaleFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "scytale",
         name = "Scytale",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TRANSPOSITION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Spartan strip wound around a rod: write along the rod, unwind to read",
+        summary = "A strip wound around a rod",
     )
 
     @Composable

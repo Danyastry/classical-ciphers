@@ -10,7 +10,7 @@ class OneTimePadFeatureTest {
     @Test
     fun `is listed as a classical cipher with perfect secrecy`() {
         assertThat(OneTimePadFeature.info.id).isEqualTo("one-time-pad")
-        assertThat(OneTimePadFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(OneTimePadFeature.info.category).isEqualTo(AlgorithmCategory.POLYALPHABETIC)
         assertThat(OneTimePadFeature.info.securityStatus).isEqualTo(SecurityStatus.PERFECT_SECRECY)
     }
 }

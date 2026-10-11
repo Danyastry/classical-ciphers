@@ -10,7 +10,7 @@ class VigenereFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(VigenereFeature.info.id).isEqualTo("vigenere")
-        assertThat(VigenereFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(VigenereFeature.info.category).isEqualTo(AlgorithmCategory.POLYALPHABETIC)
         assertThat(VigenereFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

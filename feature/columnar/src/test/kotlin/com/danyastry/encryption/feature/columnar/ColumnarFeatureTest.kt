@@ -10,7 +10,7 @@ class ColumnarFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(ColumnarFeature.info.id).isEqualTo("columnar-transposition")
-        assertThat(ColumnarFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(ColumnarFeature.info.category).isEqualTo(AlgorithmCategory.TRANSPOSITION)
         assertThat(ColumnarFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

@@ -13,9 +13,9 @@ object RailFenceFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "rail-fence",
         name = "Rail fence cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TRANSPOSITION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Writes the text in a zigzag across several rails and reads it row by row",
+        summary = "Text written in a zigzag",
     )
 
     @Composable

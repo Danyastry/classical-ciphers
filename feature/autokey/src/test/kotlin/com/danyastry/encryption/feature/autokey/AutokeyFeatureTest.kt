@@ -10,7 +10,7 @@ class AutokeyFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(AutokeyFeature.info.id).isEqualTo("autokey")
-        assertThat(AutokeyFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(AutokeyFeature.info.category).isEqualTo(AlgorithmCategory.POLYALPHABETIC)
         assertThat(AutokeyFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

@@ -13,9 +13,9 @@ object FourSquareFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "four-square",
         name = "Four-square cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TABLE_BASED,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Encrypts letter pairs across two plain and two keyed 5×5 squares",
+        summary = "Letter pairs in four squares",
     )
 
     @Composable

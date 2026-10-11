@@ -13,9 +13,9 @@ object BifidFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "bifid",
         name = "Bifid cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TABLE_BASED,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Splits letters into square coordinates, mixes the rows and columns, and joins them back",
+        summary = "Mixes row and column numbers",
     )
 
     @Composable

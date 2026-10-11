@@ -13,9 +13,9 @@ object PolybiusFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "polybius-square",
         name = "Polybius square",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TABLE_BASED,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Replaces every letter with its row and column number in a 5×5 square",
+        summary = "Letters as row and column numbers",
     )
 
     @Composable

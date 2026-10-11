@@ -13,9 +13,9 @@ object VigenereFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "vigenere",
         name = "Vigenère cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.POLYALPHABETIC,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Shifts each letter by the matching letter of a repeating keyword",
+        summary = "Caesar shifts taken from a keyword",
     )
 
     @Composable
