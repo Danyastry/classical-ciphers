@@ -1,0 +1,12 @@
+<resources>
+    <string name="twosquare_description">Vertical two-square: the first letter of each pair is found in the top square and the second in the bottom one. The same operation encrypts and decrypts.</string>
+    <string name="twosquare_alphabet_merge">I = J</string>
+    <string name="twosquare_alphabet_omit_q">No Q</string>
+    <string name="twosquare_top_keyword">Top square keyword</string>
+    <string name="twosquare_bottom_keyword">Bottom square keyword</string>
+    <string name="twosquare_squares_title">Squares</string>
+    <string name="twosquare_input_hint">Only letters are kept, and an odd last letter is padded with X</string>
+    <string name="twosquare_steps_title">Pairs</string>
+    <string name="twosquare_transparency_summary">Unchanged pairs: %1$d of %2$d. Pairs whose letters share a column leak straight into the ciphertext.</string>
+    <string name="twosquare_transparency">same column: unchanged</string>
+</resources>
