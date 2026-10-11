@@ -2,6 +2,7 @@ package com.danyastry.encryption.feature.autokey.ui
 
 import androidx.lifecycle.ViewModel
 import com.danyastry.encryption.core.classical.Keyword
+import com.danyastry.encryption.core.ui.components.CipherMode
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,14 +17,9 @@ class AutokeyViewModel : ViewModel() {
 
     fun onPrimerChange(primer: String) = update { copy(primer = Keyword.normalize(primer)) }
 
-    fun onModeChange(mode: AutokeyMode) = update { copy(mode = mode) }
+    fun onModeChange(mode: CipherMode) = update { copy(mode = mode) }
 
-    fun onUseOutputAsInput() = update {
-        copy(
-            input = output,
-            mode = if (mode == AutokeyMode.ENCRYPT) AutokeyMode.DECRYPT else AutokeyMode.ENCRYPT,
-        )
-    }
+    fun onUseOutputAsInput() = update { copy(input = output, mode = mode.toggled()) }
 
     private fun update(transform: AutokeyUiState.() -> AutokeyUiState) {
         _state.update { it.transform().recalculated() }

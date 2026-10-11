@@ -4,23 +4,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
-import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -31,10 +20,16 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.danyastry.encryption.core.classical.ALPHABET_SIZE
+import com.danyastry.encryption.core.ui.components.CipherMode
+import com.danyastry.encryption.core.ui.components.CipherTextField
+import com.danyastry.encryption.core.ui.components.LabeledSlider
+import com.danyastry.encryption.core.ui.components.ModeSelector
+import com.danyastry.encryption.core.ui.components.ResultCard
+import com.danyastry.encryption.core.ui.components.inputLabelRes
+import com.danyastry.encryption.core.ui.components.outputLabelRes
 import com.danyastry.encryption.core.ui.theme.EncryptionTheme
 import com.danyastry.encryption.feature.affine.AffineKey
 import com.danyastry.encryption.feature.affine.R
-import kotlin.math.roundToInt
 
 @Composable
 fun AffineRoute(
@@ -59,7 +54,7 @@ fun AffineScreen(
     onInputChange: (String) -> Unit,
     onMultiplierChange: (Int) -> Unit,
     onShiftChange: (Int) -> Unit,
-    onModeChange: (AffineMode) -> Unit,
+    onModeChange: (CipherMode) -> Unit,
     onUseOutputAsInput: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -71,41 +66,27 @@ fun AffineScreen(
     ) {
         ModeSelector(selected = state.mode, onSelect = onModeChange)
         MultiplierSelector(selected = state.key.a, onSelect = onMultiplierChange)
-        ShiftSlider(shift = state.key.b, onShiftChange = onShiftChange)
+        LabeledSlider(
+            label = stringResource(R.string.affine_shift_label, state.key.b),
+            value = state.key.b,
+            range = 0 until ALPHABET_SIZE,
+            onValueChange = onShiftChange,
+        )
         Text(
             text = stringResource(state.mode.formulaRes, state.key.a, state.key.b, state.key.inverseOfA),
             style = MaterialTheme.typography.bodyMedium.copy(fontFamily = FontFamily.Monospace),
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        OutlinedTextField(
+        CipherTextField(
             value = state.input,
             onValueChange = onInputChange,
-            label = { Text(stringResource(state.mode.inputLabelRes)) },
-            minLines = 3,
-            modifier = Modifier.fillMaxWidth(),
+            label = stringResource(state.mode.inputLabelRes),
         )
         ResultCard(
-            mode = state.mode,
+            label = stringResource(state.mode.outputLabelRes),
             output = state.output,
             onUseOutputAsInput = onUseOutputAsInput,
         )
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun ModeSelector(selected: AffineMode, onSelect: (AffineMode) -> Unit) {
-    val modes = AffineMode.entries
-    SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
-        modes.forEachIndexed { index, mode ->
-            SegmentedButton(
-                selected = mode == selected,
-                onClick = { onSelect(mode) },
-                shape = SegmentedButtonDefaults.itemShape(index = index, count = modes.size),
-            ) {
-                Text(stringResource(mode.labelRes))
-            }
-        }
     }
 }
 
@@ -134,68 +115,10 @@ private fun MultiplierSelector(selected: Int, onSelect: (Int) -> Unit) {
     }
 }
 
-@Composable
-private fun ShiftSlider(shift: Int, onShiftChange: (Int) -> Unit) {
-    Column {
-        Text(
-            text = stringResource(R.string.affine_shift_label, shift),
-            style = MaterialTheme.typography.titleSmall,
-        )
-        Slider(
-            value = shift.toFloat(),
-            onValueChange = { onShiftChange(it.roundToInt()) },
-            valueRange = 0f..(ALPHABET_SIZE - 1).toFloat(),
-            steps = ALPHABET_SIZE - 2,
-        )
-    }
-}
-
-@Composable
-private fun ResultCard(mode: AffineMode, output: String, onUseOutputAsInput: () -> Unit) {
-    Card(modifier = Modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = stringResource(mode.outputLabelRes),
-                style = MaterialTheme.typography.labelLarge,
-            )
-            SelectionContainer {
-                Text(
-                    text = output.ifEmpty { stringResource(R.string.affine_output_placeholder) },
-                    style = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.Monospace),
-                    modifier = Modifier.padding(vertical = 8.dp),
-                )
-            }
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                TextButton(onClick = onUseOutputAsInput, enabled = output.isNotEmpty()) {
-                    Text(stringResource(R.string.affine_use_output_as_input))
-                }
-            }
-        }
-    }
-}
-
-private val AffineMode.labelRes: Int
+private val CipherMode.formulaRes: Int
     get() = when (this) {
-        AffineMode.ENCRYPT -> R.string.affine_mode_encrypt
-        AffineMode.DECRYPT -> R.string.affine_mode_decrypt
-    }
-
-private val AffineMode.formulaRes: Int
-    get() = when (this) {
-        AffineMode.ENCRYPT -> R.string.affine_formula_encrypt
-        AffineMode.DECRYPT -> R.string.affine_formula_decrypt
-    }
-
-private val AffineMode.inputLabelRes: Int
-    get() = when (this) {
-        AffineMode.ENCRYPT -> R.string.affine_input_plaintext
-        AffineMode.DECRYPT -> R.string.affine_input_ciphertext
-    }
-
-private val AffineMode.outputLabelRes: Int
-    get() = when (this) {
-        AffineMode.ENCRYPT -> R.string.affine_output_ciphertext
-        AffineMode.DECRYPT -> R.string.affine_output_plaintext
+        CipherMode.ENCRYPT -> R.string.affine_formula_encrypt
+        CipherMode.DECRYPT -> R.string.affine_formula_decrypt
     }
 
 @Preview(showBackground = true)

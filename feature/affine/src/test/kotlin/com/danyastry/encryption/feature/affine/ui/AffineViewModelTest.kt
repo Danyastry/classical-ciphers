@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.affine.ui
 
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.danyastry.encryption.feature.affine.AffineKey
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -13,7 +14,7 @@ class AffineViewModelTest {
 
     @Test
     fun `starts in encrypt mode with the reference key`() {
-        assertThat(state.mode).isEqualTo(AffineMode.ENCRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.ENCRYPT)
         assertThat(state.key).isEqualTo(AffineKey(a = 5, b = 8))
         assertThat(state.output).isEmpty()
     }
@@ -54,7 +55,7 @@ class AffineViewModelTest {
 
     @Test
     fun `decrypt mode decrypts the input`() {
-        viewModel.onModeChange(AffineMode.DECRYPT)
+        viewModel.onModeChange(CipherMode.DECRYPT)
         viewModel.onInputChange("IHHWVC SWFRCP")
 
         assertThat(state.output).isEqualTo("AFFINE CIPHER")
@@ -66,7 +67,7 @@ class AffineViewModelTest {
 
         viewModel.onUseOutputAsInput()
 
-        assertThat(state.mode).isEqualTo(AffineMode.DECRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.DECRYPT)
         assertThat(state.output).isEqualTo("Attack at dawn")
     }
 }

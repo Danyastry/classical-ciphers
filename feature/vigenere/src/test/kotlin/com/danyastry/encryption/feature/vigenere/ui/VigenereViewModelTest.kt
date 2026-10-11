@@ -1,5 +1,7 @@
 package com.danyastry.encryption.feature.vigenere.ui
 
+import com.danyastry.encryption.core.classical.AlignedLetter
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
@@ -14,7 +16,7 @@ class VigenereViewModelTest {
     fun `starts with the lemon keyword in encrypt mode`() {
         assertThat(state.keyword).isEqualTo("LEMON")
         assertThat(state.isKeywordValid).isTrue()
-        assertThat(state.mode).isEqualTo(VigenereMode.ENCRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.ENCRYPT)
         assertThat(state.output).isEmpty()
     }
 
@@ -64,7 +66,7 @@ class VigenereViewModelTest {
 
     @Test
     fun `decrypt mode decrypts the input`() {
-        viewModel.onModeChange(VigenereMode.DECRYPT)
+        viewModel.onModeChange(CipherMode.DECRYPT)
         viewModel.onInputChange("LXFOPVEFRNHR")
 
         assertThat(state.output).isEqualTo("ATTACKATDAWN")
@@ -76,7 +78,7 @@ class VigenereViewModelTest {
 
         viewModel.onUseOutputAsInput()
 
-        assertThat(state.mode).isEqualTo(VigenereMode.DECRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.DECRYPT)
         assertThat(state.output).isEqualTo("Attack at dawn")
     }
 }

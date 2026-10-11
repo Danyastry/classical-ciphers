@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.autokey.ui
 
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
@@ -14,7 +15,7 @@ class AutokeyViewModelTest {
     fun `starts with the queenly primer in encrypt mode`() {
         assertThat(state.primer).isEqualTo("QUEENLY")
         assertThat(state.isPrimerValid).isTrue()
-        assertThat(state.mode).isEqualTo(AutokeyMode.ENCRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.ENCRYPT)
         assertThat(state.output).isEmpty()
     }
 
@@ -44,17 +45,16 @@ class AutokeyViewModelTest {
     }
 
     @Test
-    fun `alignment marks primer letters and then plaintext letters`() {
+    fun `key row starts with the primer and continues with the plaintext`() {
         viewModel.onPrimerChange("KEY")
         viewModel.onInputChange("Hi, all")
 
         assertThat(state.alignment.map { it.key }).containsExactly('K', 'E', 'Y', 'H', 'I').inOrder()
-        assertThat(state.alignment.map { it.isPrimer }).containsExactly(true, true, true, false, false).inOrder()
     }
 
     @Test
     fun `decrypt mode shows the recovered plaintext in the key row`() {
-        viewModel.onModeChange(AutokeyMode.DECRYPT)
+        viewModel.onModeChange(CipherMode.DECRYPT)
         viewModel.onInputChange("QNXEPVYTWTWP")
 
         assertThat(state.output).isEqualTo("ATTACKATDAWN")
@@ -74,7 +74,7 @@ class AutokeyViewModelTest {
 
         viewModel.onUseOutputAsInput()
 
-        assertThat(state.mode).isEqualTo(AutokeyMode.DECRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.DECRYPT)
         assertThat(state.output).isEqualTo("Attack at dawn")
     }
 }

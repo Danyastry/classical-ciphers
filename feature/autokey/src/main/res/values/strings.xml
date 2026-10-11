@@ -1,14 +1,6 @@
 <resources>
-    <string name="autokey_mode_encrypt">Encrypt</string>
-    <string name="autokey_mode_decrypt">Decrypt</string>
     <string name="autokey_primer_label">Primer</string>
     <string name="autokey_primer_hint">The key starts with the primer and continues with the plaintext</string>
-    <string name="autokey_primer_error">Enter at least one letter A–Z</string>
-    <string name="autokey_plaintext">Plaintext</string>
-    <string name="autokey_ciphertext">Ciphertext</string>
-    <string name="autokey_output_placeholder">Type something above</string>
-    <string name="autokey_use_output_as_input">Use as input</string>
     <string name="autokey_alignment_title">How the key is built</string>
     <string name="autokey_alignment_hint">Primer letters come first, then the plaintext feeds the key</string>
-    <string name="autokey_alignment_key">Key</string>
 </resources>

@@ -1,14 +1,5 @@
 <resources>
     <string name="beaufort_description">C = (K − P) mod 26. The same operation encrypts and decrypts, so there is no separate decrypt mode.</string>
-    <string name="beaufort_keyword_label">Keyword</string>
     <string name="beaufort_keyword_hint">Each letter is a number: A = 0, B = 1, … Z = 25</string>
-    <string name="beaufort_keyword_error">Enter at least one letter A–Z</string>
-    <string name="beaufort_input_label">Text</string>
-    <string name="beaufort_output_label">Result</string>
-    <string name="beaufort_output_placeholder">Type something above</string>
-    <string name="beaufort_use_output_as_input">Use as input</string>
     <string name="beaufort_alignment_title">How the keyword lines up</string>
-    <string name="beaufort_alignment_text">Text</string>
-    <string name="beaufort_alignment_key">Key</string>
-    <string name="beaufort_alignment_result">Result</string>
 </resources>

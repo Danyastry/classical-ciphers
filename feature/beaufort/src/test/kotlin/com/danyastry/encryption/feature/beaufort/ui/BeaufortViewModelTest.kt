@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.beaufort.ui
 
+import com.danyastry.encryption.core.classical.AlignedLetter
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 

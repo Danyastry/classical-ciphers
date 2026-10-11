@@ -2,25 +2,12 @@ package com.danyastry.encryption.feature.caesar.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
-import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -31,10 +18,16 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.danyastry.encryption.core.classical.ALPHABET_SIZE
+import com.danyastry.encryption.core.ui.components.CipherMode
+import com.danyastry.encryption.core.ui.components.CipherTextField
+import com.danyastry.encryption.core.ui.components.LabeledSlider
+import com.danyastry.encryption.core.ui.components.ModeSelector
+import com.danyastry.encryption.core.ui.components.ResultCard
+import com.danyastry.encryption.core.ui.components.inputLabelRes
+import com.danyastry.encryption.core.ui.components.outputLabelRes
 import com.danyastry.encryption.core.ui.theme.EncryptionTheme
 import com.danyastry.encryption.feature.caesar.BruteForceCandidate
 import com.danyastry.encryption.feature.caesar.R
-import kotlin.math.roundToInt
 
 @Composable
 fun CaesarRoute(
@@ -58,7 +51,7 @@ fun CaesarScreen(
     state: CaesarUiState,
     onInputChange: (String) -> Unit,
     onShiftChange: (Int) -> Unit,
-    onModeChange: (CaesarMode) -> Unit,
+    onModeChange: (CipherMode) -> Unit,
     onUseOutputAsInput: () -> Unit,
     onCandidateSelected: (Int) -> Unit,
     modifier: Modifier = Modifier,
@@ -72,20 +65,23 @@ fun CaesarScreen(
             ModeSelector(selected = state.mode, onSelect = onModeChange)
         }
         item {
-            ShiftSlider(shift = state.shift, onShiftChange = onShiftChange)
+            LabeledSlider(
+                label = stringResource(R.string.caesar_shift_label, state.shift),
+                value = state.shift,
+                range = 0 until ALPHABET_SIZE,
+                onValueChange = onShiftChange,
+            )
         }
         item {
-            OutlinedTextField(
+            CipherTextField(
                 value = state.input,
                 onValueChange = onInputChange,
-                label = { Text(stringResource(state.mode.inputLabelRes)) },
-                minLines = 3,
-                modifier = Modifier.fillMaxWidth(),
+                label = stringResource(state.mode.inputLabelRes),
             )
         }
         item {
             ResultCard(
-                mode = state.mode,
+                label = stringResource(state.mode.outputLabelRes),
                 output = state.output,
                 onUseOutputAsInput = onUseOutputAsInput,
             )
@@ -103,63 +99,6 @@ fun CaesarScreen(
                     isSelected = candidate.shift == state.shift,
                     onClick = { onCandidateSelected(candidate.shift) },
                 )
-            }
-        }
-    }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun ModeSelector(selected: CaesarMode, onSelect: (CaesarMode) -> Unit) {
-    val modes = CaesarMode.entries
-    SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
-        modes.forEachIndexed { index, mode ->
-            SegmentedButton(
-                selected = mode == selected,
-                onClick = { onSelect(mode) },
-                shape = SegmentedButtonDefaults.itemShape(index = index, count = modes.size),
-            ) {
-                Text(stringResource(mode.labelRes))
-            }
-        }
-    }
-}
-
-@Composable
-private fun ShiftSlider(shift: Int, onShiftChange: (Int) -> Unit) {
-    Column {
-        Text(
-            text = stringResource(R.string.caesar_shift_label, shift),
-            style = MaterialTheme.typography.titleSmall,
-        )
-        Slider(
-            value = shift.toFloat(),
-            onValueChange = { onShiftChange(it.roundToInt()) },
-            valueRange = 0f..(ALPHABET_SIZE - 1).toFloat(),
-            steps = ALPHABET_SIZE - 2,
-        )
-    }
-}
-
-@Composable
-private fun ResultCard(mode: CaesarMode, output: String, onUseOutputAsInput: () -> Unit) {
-    Card(modifier = Modifier.fillMaxWidth()) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(
-                text = stringResource(mode.outputLabelRes),
-                style = MaterialTheme.typography.labelLarge,
-            )
-            SelectionContainer {
-                Text(
-                    text = output.ifEmpty { stringResource(R.string.caesar_output_placeholder) },
-                    style = MaterialTheme.typography.bodyLarge.copy(fontFamily = FontFamily.Monospace),
-                    modifier = Modifier.padding(vertical = 8.dp),
-                )
-            }
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                TextButton(onClick = onUseOutputAsInput, enabled = output.isNotEmpty()) {
-                    Text(stringResource(R.string.caesar_use_output_as_input))
-                }
             }
         }
     }
@@ -186,30 +125,12 @@ private fun CandidateRow(candidate: BruteForceCandidate, isSelected: Boolean, on
     )
 }
 
-private val CaesarMode.labelRes: Int
-    get() = when (this) {
-        CaesarMode.ENCRYPT -> R.string.caesar_mode_encrypt
-        CaesarMode.DECRYPT -> R.string.caesar_mode_decrypt
-    }
-
-private val CaesarMode.inputLabelRes: Int
-    get() = when (this) {
-        CaesarMode.ENCRYPT -> R.string.caesar_input_plaintext
-        CaesarMode.DECRYPT -> R.string.caesar_input_ciphertext
-    }
-
-private val CaesarMode.outputLabelRes: Int
-    get() = when (this) {
-        CaesarMode.ENCRYPT -> R.string.caesar_output_ciphertext
-        CaesarMode.DECRYPT -> R.string.caesar_output_plaintext
-    }
-
 @Preview(showBackground = true)
 @Composable
 private fun CaesarScreenPreview() {
     EncryptionTheme {
         CaesarScreen(
-            state = CaesarUiState(mode = CaesarMode.DECRYPT, input = "Khoor, Zruog!").recalculated(),
+            state = CaesarUiState(mode = CipherMode.DECRYPT, input = "Khoor, Zruog!").recalculated(),
             onInputChange = {},
             onShiftChange = {},
             onModeChange = {},
