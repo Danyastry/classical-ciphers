@@ -1,7 +1,7 @@
 package com.danyastry.encryption.feature.substitution.ui
 
+import com.danyastry.encryption.core.classical.ALPHABET
 import com.danyastry.encryption.feature.substitution.KeyError
-import com.danyastry.encryption.feature.substitution.SubstitutionKey
 import com.google.common.truth.Truth.assertThat
 import kotlin.random.Random
 import org.junit.Test
@@ -62,9 +62,9 @@ class SubstitutionViewModelTest {
 
     @Test
     fun `key is capped at 26 letters`() {
-        viewModel.onKeyTextChange(SubstitutionKey.PLAIN_ALPHABET + "ABC")
+        viewModel.onKeyTextChange(ALPHABET + "ABC")
 
-        assertThat(state.keyText).isEqualTo(SubstitutionKey.PLAIN_ALPHABET)
+        assertThat(state.keyText).isEqualTo(ALPHABET)
         assertThat(state.keyError).isNull()
     }
 
@@ -74,7 +74,7 @@ class SubstitutionViewModelTest {
 
         assertThat(state.keyword).isEmpty()
         assertThat(state.keyError).isNull()
-        assertThat(state.keyText.toSet()).isEqualTo(SubstitutionKey.PLAIN_ALPHABET.toSet())
+        assertThat(state.keyText.toSet()).isEqualTo(ALPHABET.toSet())
     }
 
     @Test

@@ -1,7 +1,8 @@
 package com.danyastry.encryption.feature.vigenere.ui
 
+import com.danyastry.encryption.core.classical.Keyword
+import com.danyastry.encryption.core.classical.isAsciiLetter
 import com.danyastry.encryption.feature.vigenere.VigenereCipher
-import com.danyastry.encryption.feature.vigenere.VigenereKey
 
 enum class VigenereMode { ENCRYPT, DECRYPT }
 
@@ -26,7 +27,7 @@ private val cipher = VigenereCipher()
 internal fun VigenereUiState.recalculated(): VigenereUiState {
     if (keyword.isEmpty()) return copy(isKeywordValid = false, output = "", alignment = emptyList())
 
-    val key = VigenereKey(keyword)
+    val key = Keyword(keyword)
     val output = when (mode) {
         VigenereMode.ENCRYPT -> cipher.encrypt(input, key)
         VigenereMode.DECRYPT -> cipher.decrypt(input, key)
@@ -45,5 +46,3 @@ private fun align(input: String, output: String, keyword: String): List<AlignedL
                 output = output[position],
             )
         }
-
-private fun Char.isAsciiLetter(): Boolean = this in 'a'..'z' || this in 'A'..'Z'

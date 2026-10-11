@@ -1,7 +1,7 @@
 package com.danyastry.encryption.feature.vigenere.ui
 
 import androidx.lifecycle.ViewModel
-import com.danyastry.encryption.feature.vigenere.VigenereKey
+import com.danyastry.encryption.core.classical.Keyword
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,7 +14,7 @@ class VigenereViewModel : ViewModel() {
 
     fun onInputChange(input: String) = update { copy(input = input) }
 
-    fun onKeywordChange(keyword: String) = update { copy(keyword = VigenereKey.normalize(keyword)) }
+    fun onKeywordChange(keyword: String) = update { copy(keyword = Keyword.normalize(keyword)) }
 
     fun onModeChange(mode: VigenereMode) = update { copy(mode = mode) }
 

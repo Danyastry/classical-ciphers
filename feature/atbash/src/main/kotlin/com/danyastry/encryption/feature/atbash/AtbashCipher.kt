@@ -1,14 +1,9 @@
 package com.danyastry.encryption.feature.atbash
 
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
+import com.danyastry.encryption.core.classical.mapLetters
+
 class AtbashCipher {
 
-    fun transform(text: String): String = buildString(text.length) {
-        text.forEach { append(mirror(it)) }
-    }
-
-    private fun mirror(char: Char): Char = when (char) {
-        in 'a'..'z' -> 'z' - (char - 'a')
-        in 'A'..'Z' -> 'Z' - (char - 'A')
-        else -> char
-    }
+    fun transform(text: String): String = text.mapLetters { ALPHABET_SIZE - 1 - it }
 }

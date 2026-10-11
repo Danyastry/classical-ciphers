@@ -1,6 +1,7 @@
 package com.danyastry.encryption.feature.substitution.ui
 
 import androidx.lifecycle.ViewModel
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
 import com.danyastry.encryption.feature.substitution.SubstitutionKey
 import java.security.SecureRandom
 import kotlin.random.Random
@@ -24,7 +25,7 @@ class SubstitutionViewModel(
     }
 
     fun onKeyTextChange(keyText: String) = update {
-        copy(keyword = "", keyText = keyText.uppercase().filter { it in 'A'..'Z' }.take(SubstitutionKey.ALPHABET_SIZE))
+        copy(keyword = "", keyText = keyText.uppercase().filter { it in 'A'..'Z' }.take(ALPHABET_SIZE))
     }
 
     fun onRandomKey() = update {

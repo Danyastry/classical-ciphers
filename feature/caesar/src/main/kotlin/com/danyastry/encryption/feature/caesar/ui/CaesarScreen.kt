@@ -23,7 +23,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
@@ -31,9 +30,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
 import com.danyastry.encryption.core.ui.theme.EncryptionTheme
 import com.danyastry.encryption.feature.caesar.BruteForceCandidate
-import com.danyastry.encryption.feature.caesar.CaesarCipher
 import com.danyastry.encryption.feature.caesar.R
 import kotlin.math.roundToInt
 
@@ -136,8 +135,8 @@ private fun ShiftSlider(shift: Int, onShiftChange: (Int) -> Unit) {
         Slider(
             value = shift.toFloat(),
             onValueChange = { onShiftChange(it.roundToInt()) },
-            valueRange = 0f..(CaesarCipher.ALPHABET_SIZE - 1).toFloat(),
-            steps = CaesarCipher.ALPHABET_SIZE - 2,
+            valueRange = 0f..(ALPHABET_SIZE - 1).toFloat(),
+            steps = ALPHABET_SIZE - 2,
         )
     }
 }

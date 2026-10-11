@@ -1,6 +1,7 @@
 package com.danyastry.encryption.feature.affine.ui
 
 import androidx.lifecycle.ViewModel
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
 import com.danyastry.encryption.feature.affine.AffineKey
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,7 +21,7 @@ class AffineViewModel : ViewModel() {
     }
 
     fun onShiftChange(b: Int) = update {
-        copy(key = key.copy(b = b.coerceIn(0, AffineKey.ALPHABET_SIZE - 1)))
+        copy(key = key.copy(b = b.coerceIn(0, ALPHABET_SIZE - 1)))
     }
 
     fun onModeChange(mode: AffineMode) = update { copy(mode = mode) }

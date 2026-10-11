@@ -5,3 +5,7 @@ plugins {
 android {
     namespace = "com.danyastry.encryption.feature.beaufort"
 }
+
+dependencies {
+    implementation(projects.core.classical)
+}

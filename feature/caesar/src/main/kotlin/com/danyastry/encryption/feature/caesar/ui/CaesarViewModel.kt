@@ -1,7 +1,7 @@
 package com.danyastry.encryption.feature.caesar.ui
 
 import androidx.lifecycle.ViewModel
-import com.danyastry.encryption.feature.caesar.CaesarCipher
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +15,7 @@ class CaesarViewModel : ViewModel() {
     fun onInputChange(input: String) = update { copy(input = input) }
 
     fun onShiftChange(shift: Int) = update {
-        copy(shift = shift.coerceIn(0, CaesarCipher.ALPHABET_SIZE - 1))
+        copy(shift = shift.coerceIn(0, ALPHABET_SIZE - 1))
     }
 
     fun onModeChange(mode: CaesarMode) = update { copy(mode = mode) }

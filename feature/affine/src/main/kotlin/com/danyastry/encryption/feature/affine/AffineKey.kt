@@ -1,5 +1,7 @@
 package com.danyastry.encryption.feature.affine
 
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
+
 data class AffineKey(val a: Int, val b: Int) {
 
     init {
@@ -12,8 +14,6 @@ data class AffineKey(val a: Int, val b: Int) {
         get() = modularInverse(a.mod(ALPHABET_SIZE))
 
     companion object {
-        const val ALPHABET_SIZE = 26
-
         val VALID_MULTIPLIERS: List<Int> = (1 until ALPHABET_SIZE).filter { gcd(it, ALPHABET_SIZE) == 1 }
 
         private fun gcd(x: Int, y: Int): Int = if (y == 0) x else gcd(y, x % y)

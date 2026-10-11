@@ -5,3 +5,7 @@ plugins {
 android {
     namespace = "com.danyastry.encryption.feature.autokey"
 }
+
+dependencies {
+    implementation(projects.core.classical)
+}

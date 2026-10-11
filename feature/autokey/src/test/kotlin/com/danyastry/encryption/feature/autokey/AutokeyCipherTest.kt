@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.autokey
 
+import com.danyastry.encryption.core.classical.Keyword
 import com.danyastry.encryption.core.testing.assertRoundTrip
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -7,7 +8,7 @@ import org.junit.Test
 class AutokeyCipherTest {
 
     private val cipher = AutokeyCipher()
-    private val queenly = AutokeyKey("QUEENLY")
+    private val queenly = Keyword("QUEENLY")
 
     @Test
     fun `matches the reference example`() {
@@ -28,24 +29,24 @@ class AutokeyCipherTest {
     @Test
     fun `preserves case and skips non letters`() {
         assertThat(cipher.encrypt("attack at dawn", queenly)).isEqualTo("qnxepv yt wtwp")
-        assertThat(cipher.encrypt("Hello, World!", AutokeyKey("KEY"))).isEqualTo("Rijss, Hzfhr!")
+        assertThat(cipher.encrypt("Hello, World!", Keyword("KEY"))).isEqualTo("Rijss, Hzfhr!")
     }
 
     @Test
     fun `key does not repeat like vigenere`() {
-        assertThat(cipher.encrypt("AAAA", AutokeyKey("B"))).isEqualTo("BAAA")
+        assertThat(cipher.encrypt("AAAA", Keyword("B"))).isEqualTo("BAAA")
     }
 
     @Test
     fun `round trips different primers`() {
         listOf("A", "Z", "KEY", "QUEENLY", "ABCDEFGHIJKLMNOPQRSTUVWXYZ").forEach { primer ->
-            assertRoundTrip(cipher, "The Quick Brown Fox Jumps Over The Lazy Dog, 123!", AutokeyKey(primer))
+            assertRoundTrip(cipher, "The Quick Brown Fox Jumps Over The Lazy Dog, 123!", Keyword(primer))
         }
     }
 
     @Test
     fun `primer longer than the text still round trips`() {
-        assertRoundTrip(cipher, "Hi!", AutokeyKey("VERYLONGPRIMER"))
+        assertRoundTrip(cipher, "Hi!", Keyword("VERYLONGPRIMER"))
     }
 
     @Test
