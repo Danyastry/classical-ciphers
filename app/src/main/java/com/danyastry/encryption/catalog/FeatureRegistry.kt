@@ -17,6 +17,7 @@ import com.danyastry.encryption.feature.railfence.RailFenceFeature
 import com.danyastry.encryption.feature.rot.RotFeature
 import com.danyastry.encryption.feature.scytale.ScytaleFeature
 import com.danyastry.encryption.feature.substitution.SubstitutionFeature
+import com.danyastry.encryption.feature.trifid.TrifidFeature
 import com.danyastry.encryption.feature.vigenere.VigenereFeature
 
 object FeatureRegistry {
@@ -38,5 +39,6 @@ object FeatureRegistry {
         PolybiusFeature,
         AdfgvxFeature,
         BifidFeature,
+        TrifidFeature,
     )
 }
