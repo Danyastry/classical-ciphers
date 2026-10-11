@@ -1,0 +1,15 @@
+<resources>
+    <string name="affine_mode_encrypt">Encrypt</string>
+    <string name="affine_mode_decrypt">Decrypt</string>
+    <string name="affine_multiplier_label">Multiplier a: %1$d</string>
+    <string name="affine_multiplier_hint">Only values coprime with 26 can be decrypted</string>
+    <string name="affine_shift_label">Shift b: %1$d</string>
+    <string name="affine_formula_encrypt">E(x) = (%1$d·x + %2$d) mod 26</string>
+    <string name="affine_formula_decrypt">D(y) = %3$d·(y − %2$d) mod 26, where %3$d is the inverse of %1$d</string>
+    <string name="affine_input_plaintext">Plaintext</string>
+    <string name="affine_input_ciphertext">Ciphertext</string>
+    <string name="affine_output_ciphertext">Ciphertext</string>
+    <string name="affine_output_plaintext">Plaintext</string>
+    <string name="affine_output_placeholder">Type something above</string>
+    <string name="affine_use_output_as_input">Use as input</string>
+</resources>
