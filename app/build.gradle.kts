@@ -40,6 +40,7 @@ dependencies {
     implementation(projects.feature.railfence)
     implementation(projects.feature.columnar)
     implementation(projects.feature.scytale)
+    implementation(projects.feature.bacon)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
