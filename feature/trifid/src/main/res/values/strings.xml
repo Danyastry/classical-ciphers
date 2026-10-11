@@ -1,0 +1,13 @@
+<resources>
+    <string name="trifid_keyword_hint">Fills the 27 cells first. The cube holds A–Z plus +.</string>
+    <string name="trifid_cube_title">Cube</string>
+    <string name="trifid_cube_hint">Three 3×3 layers side by side</string>
+    <string name="trifid_period_whole">Period: whole message</string>
+    <string name="trifid_period_label">Period: %1$d</string>
+    <string name="trifid_input_hint">Only letters A–Z and + are kept</string>
+    <string name="trifid_coordinates_title">Coordinates</string>
+    <string name="trifid_coordinates_hint">Encryption reads all layers, then all rows, then all columns, as new triples</string>
+    <string name="trifid_layer">Layer</string>
+    <string name="trifid_row">Row</string>
+    <string name="trifid_column">Column</string>
+</resources>

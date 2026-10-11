@@ -44,6 +44,7 @@ dependencies {
     implementation(projects.feature.polybius)
     implementation(projects.feature.adfgvx)
     implementation(projects.feature.bifid)
+    implementation(projects.feature.trifid)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
