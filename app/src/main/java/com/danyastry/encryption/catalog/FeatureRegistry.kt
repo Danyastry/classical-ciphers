@@ -10,6 +10,7 @@ import com.danyastry.encryption.feature.beaufort.BeaufortFeature
 import com.danyastry.encryption.feature.bifid.BifidFeature
 import com.danyastry.encryption.feature.caesar.CaesarFeature
 import com.danyastry.encryption.feature.columnar.ColumnarFeature
+import com.danyastry.encryption.feature.enigma.EnigmaFeature
 import com.danyastry.encryption.feature.foursquare.FourSquareFeature
 import com.danyastry.encryption.feature.hill.HillFeature
 import com.danyastry.encryption.feature.playfair.PlayfairFeature
@@ -44,5 +45,6 @@ object FeatureRegistry {
         TrifidFeature,
         FourSquareFeature,
         TwoSquareFeature,
+        EnigmaFeature,
     )
 }

@@ -1,0 +1,29 @@
+<resources>
+    <string name="enigma_description">Enigma is reciprocal: with the same settings, typing the ciphertext gives the plaintext back. A letter never encrypts to itself, which helped codebreakers at Bletchley Park.</string>
+    <string name="enigma_load_barbarossa">Load the 1941 Barbarossa message</string>
+    <string name="enigma_reflector">Reflector</string>
+    <string name="enigma_rotor_left">Left rotor</string>
+    <string name="enigma_rotor_middle">Middle rotor</string>
+    <string name="enigma_rotor_right">Right rotor</string>
+    <string name="enigma_rings">Ring settings</string>
+    <string name="enigma_rings_hint">Ringstellung, left to right, A = 01</string>
+    <string name="enigma_positions">Start positions</string>
+    <string name="enigma_positions_hint">Letters shown in the rotor windows before the first key press</string>
+    <string name="enigma_error_three_letters">Enter three letters A–Z</string>
+    <string name="enigma_plugboard">Plugboard</string>
+    <string name="enigma_plugboard_hint">Letter pairs such as AV BS CG. Leave empty for no cables.</string>
+    <string name="enigma_error_plugboard_odd">Every cable needs two letters</string>
+    <string name="enigma_error_plugboard_repeated">A letter can only be used by one cable</string>
+    <string name="enigma_window_after">Rotor windows after the message: %1$s</string>
+    <string name="enigma_path_title">Path of the last letter</string>
+    <string name="enigma_stage_key">key pressed</string>
+    <string name="enigma_stage_plugboard_in">after the plugboard</string>
+    <string name="enigma_stage_right_in">right rotor</string>
+    <string name="enigma_stage_middle_in">middle rotor</string>
+    <string name="enigma_stage_left_in">left rotor</string>
+    <string name="enigma_stage_reflector">reflector</string>
+    <string name="enigma_stage_left_out">left rotor, way back</string>
+    <string name="enigma_stage_middle_out">middle rotor, way back</string>
+    <string name="enigma_stage_right_out">right rotor, way back</string>
+    <string name="enigma_stage_lamp">lamp after the plugboard</string>
+</resources>

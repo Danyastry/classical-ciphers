@@ -47,6 +47,7 @@ dependencies {
     implementation(projects.feature.trifid)
     implementation(projects.feature.foursquare)
     implementation(projects.feature.twosquare)
+    implementation(projects.feature.enigma)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
