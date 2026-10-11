@@ -1,4 +1,12 @@
 <resources>
     <string name="vigenere_keyword_hint">Each letter is a shift: A = 0, B = 1, … Z = 25</string>
     <string name="vigenere_alignment_title">How the keyword lines up</string>
+    <string name="vigenere_load_sample">Load a sample to crack</string>
+    <string name="vigenere_kasiski_title">Kasiski examination</string>
+    <string name="vigenere_kasiski_hint">Repeats in the ciphertext are a multiple of the key length apart</string>
+    <string name="vigenere_kasiski_repeats">Repeated letters</string>
+    <string name="vigenere_kasiski_repeat">%1$s, distance %2$d</string>
+    <string name="vigenere_kasiski_factors">Distances divisible by</string>
+    <string name="vigenere_kasiski_result">Key length %1$d, key %2$s</string>
+    <string name="vigenere_kasiski_use_key">Use this key</string>
 </resources>

@@ -4,7 +4,9 @@ import com.danyastry.encryption.core.classical.AlignedLetter
 import com.danyastry.encryption.core.classical.Keyword
 import com.danyastry.encryption.core.classical.alignLetters
 import com.danyastry.encryption.core.ui.components.CipherMode
+import com.danyastry.encryption.feature.vigenere.KasiskiResult
 import com.danyastry.encryption.feature.vigenere.VigenereCipher
+import com.danyastry.encryption.feature.vigenere.VigenereCracker
 
 data class VigenereUiState(
     val keyword: String = DEFAULT_KEYWORD,
@@ -13,6 +15,7 @@ data class VigenereUiState(
     val input: String = "",
     val output: String = "",
     val alignment: List<AlignedLetter> = emptyList(),
+    val kasiski: KasiskiResult? = null,
 ) {
     companion object {
         const val DEFAULT_KEYWORD = "LEMON"
@@ -23,7 +26,8 @@ data class VigenereUiState(
 private val cipher = VigenereCipher()
 
 internal fun VigenereUiState.recalculated(): VigenereUiState {
-    if (keyword.isEmpty()) return copy(isKeywordValid = false, output = "", alignment = emptyList())
+    val kasiski = if (mode == CipherMode.DECRYPT) VigenereCracker.crack(input) else null
+    if (keyword.isEmpty()) return copy(isKeywordValid = false, output = "", alignment = emptyList(), kasiski = kasiski)
 
     val key = Keyword(keyword)
     val output = when (mode) {
@@ -34,5 +38,6 @@ internal fun VigenereUiState.recalculated(): VigenereUiState {
         isKeywordValid = true,
         output = output,
         alignment = alignLetters(input, output, VigenereUiState.MAX_ALIGNED_LETTERS) { keyword[it % keyword.length] },
+        kasiski = kasiski,
     )
 }

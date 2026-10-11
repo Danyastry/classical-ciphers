@@ -2,12 +2,14 @@ package com.danyastry.encryption.feature.vigenere.ui
 
 import com.danyastry.encryption.core.classical.AlignedLetter
 import com.danyastry.encryption.core.ui.components.CipherMode
+import com.danyastry.encryption.feature.vigenere.SampleText
 import com.google.common.truth.Truth.assertThat
+import kotlin.random.Random
 import org.junit.Test
 
 class VigenereViewModelTest {
 
-    private val viewModel = VigenereViewModel()
+    private val viewModel = VigenereViewModel(random = Random(seed = 5))
 
     private val state
         get() = viewModel.state.value
@@ -80,5 +82,30 @@ class VigenereViewModelTest {
 
         assertThat(state.mode).isEqualTo(CipherMode.DECRYPT)
         assertThat(state.output).isEqualTo("Attack at dawn")
+    }
+
+    @Test
+    fun `loading the sample switches to decrypt and runs the analysis`() {
+        viewModel.onLoadSample()
+
+        assertThat(state.mode).isEqualTo(CipherMode.DECRYPT)
+        assertThat(state.kasiski).isNotNull()
+        assertThat(state.kasiski?.key?.length).isIn(4..9)
+    }
+
+    @Test
+    fun `using the cracked key reveals the sample`() {
+        viewModel.onLoadSample()
+
+        viewModel.onUseCrackedKey()
+
+        assertThat(state.output).isEqualTo(SampleText.KASISKI)
+    }
+
+    @Test
+    fun `no analysis in encrypt mode`() {
+        viewModel.onInputChange(SampleText.KASISKI)
+
+        assertThat(state.kasiski).isNull()
     }
 }
