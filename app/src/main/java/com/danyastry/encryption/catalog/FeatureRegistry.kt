@@ -11,6 +11,7 @@ import com.danyastry.encryption.feature.hill.HillFeature
 import com.danyastry.encryption.feature.playfair.PlayfairFeature
 import com.danyastry.encryption.feature.railfence.RailFenceFeature
 import com.danyastry.encryption.feature.rot.RotFeature
+import com.danyastry.encryption.feature.scytale.ScytaleFeature
 import com.danyastry.encryption.feature.substitution.SubstitutionFeature
 import com.danyastry.encryption.feature.vigenere.VigenereFeature
 
@@ -28,5 +29,6 @@ object FeatureRegistry {
         HillFeature,
         RailFenceFeature,
         ColumnarFeature,
+        ScytaleFeature,
     )
 }

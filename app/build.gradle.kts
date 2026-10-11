@@ -39,6 +39,7 @@ dependencies {
     implementation(projects.feature.hill)
     implementation(projects.feature.railfence)
     implementation(projects.feature.columnar)
+    implementation(projects.feature.scytale)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
