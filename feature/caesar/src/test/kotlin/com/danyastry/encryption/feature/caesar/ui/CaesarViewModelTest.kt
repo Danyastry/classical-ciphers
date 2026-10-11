@@ -85,4 +85,20 @@ class CaesarViewModelTest {
         assertThat(state.shift).isEqualTo(5)
         assertThat(state.output).isEqualTo("Caesar")
     }
+
+    @Test
+    fun `decrypt mode suggests the most likely shift`() {
+        viewModel.onModeChange(CipherMode.DECRYPT)
+
+        viewModel.onInputChange("Wkh txlfn eurzq ira mxpsv ryhu wkh odcb grj dqg uxqv dzdb")
+
+        assertThat(state.mostLikelyShift).isEqualTo(3)
+    }
+
+    @Test
+    fun `no suggestion in encrypt mode`() {
+        viewModel.onInputChange("The quick brown fox")
+
+        assertThat(state.mostLikelyShift).isNull()
+    }
 }

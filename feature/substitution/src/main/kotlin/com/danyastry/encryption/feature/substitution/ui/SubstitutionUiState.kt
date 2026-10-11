@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.substitution.ui
 
+import com.danyastry.encryption.core.classical.LetterFrequency
 import com.danyastry.encryption.core.ui.components.CipherMode
 import com.danyastry.encryption.feature.substitution.KeyError
 import com.danyastry.encryption.feature.substitution.SubstitutionCipher
@@ -12,6 +13,9 @@ data class SubstitutionUiState(
     val mode: CipherMode = CipherMode.ENCRYPT,
     val input: String = "",
     val output: String = "",
+    val cipherLettersByFrequency: String = "",
+    val swapFirst: String = "",
+    val swapSecond: String = "",
 ) {
     companion object {
         const val DEFAULT_KEYWORD = "ZEBRAS"
@@ -22,7 +26,9 @@ private val cipher = SubstitutionCipher()
 
 internal fun SubstitutionUiState.recalculated(): SubstitutionUiState {
     val error = SubstitutionKey.validate(keyText)
-    if (error != null) return copy(keyError = error, output = "")
+    val ciphertext = if (mode == CipherMode.DECRYPT) input else ""
+    val frequencyOrder = if (ciphertext.isBlank()) "" else LetterFrequency.byFrequency(ciphertext)
+    if (error != null) return copy(keyError = error, output = "", cipherLettersByFrequency = frequencyOrder)
 
     val key = SubstitutionKey(keyText)
     return copy(
@@ -31,5 +37,6 @@ internal fun SubstitutionUiState.recalculated(): SubstitutionUiState {
             CipherMode.ENCRYPT -> cipher.encrypt(input, key)
             CipherMode.DECRYPT -> cipher.decrypt(input, key)
         },
+        cipherLettersByFrequency = frequencyOrder,
     )
 }
