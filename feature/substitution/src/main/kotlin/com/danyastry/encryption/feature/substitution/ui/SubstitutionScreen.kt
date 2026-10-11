@@ -33,10 +33,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.danyastry.encryption.core.classical.ALPHABET
 import com.danyastry.encryption.core.ui.theme.EncryptionTheme
 import com.danyastry.encryption.feature.substitution.KeyError
 import com.danyastry.encryption.feature.substitution.R
-import com.danyastry.encryption.feature.substitution.SubstitutionKey
 
 @Composable
 fun SubstitutionRoute(
@@ -136,7 +136,7 @@ private fun ModeSelector(selected: SubstitutionMode, onSelect: (SubstitutionMode
 
 @Composable
 private fun MappingTable(keyText: String) {
-    val keyLetters = SubstitutionKey.PLAIN_ALPHABET.indices.map { keyText.getOrNull(it) ?: '·' }
+    val keyLetters = ALPHABET.indices.map { keyText.getOrNull(it) ?: '·' }
     Card(modifier = Modifier.fillMaxWidth()) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
@@ -148,7 +148,7 @@ private fun MappingTable(keyText: String) {
                     .padding(top = 8.dp)
                     .horizontalScroll(rememberScrollState()),
             ) {
-                MappingRow(SubstitutionKey.PLAIN_ALPHABET.toList(), MaterialTheme.colorScheme.onSurface)
+                MappingRow(ALPHABET.toList(), MaterialTheme.colorScheme.onSurface)
                 MappingRow(keyLetters, MaterialTheme.colorScheme.primary)
             }
         }

@@ -1,5 +1,7 @@
 package com.danyastry.encryption.feature.substitution
 
+import com.danyastry.encryption.core.classical.ALPHABET
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
 import kotlin.random.Random
 
 enum class KeyError { WRONG_LENGTH, INVALID_CHARACTERS, DUPLICATE_LETTERS }
@@ -15,9 +17,6 @@ data class SubstitutionKey(val alphabet: String) {
     }
 
     companion object {
-        const val ALPHABET_SIZE = 26
-        const val PLAIN_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
         fun validate(alphabet: String): KeyError? = when {
             alphabet.any { it !in 'A'..'Z' } -> KeyError.INVALID_CHARACTERS
             alphabet.toSet().size != alphabet.length -> KeyError.DUPLICATE_LETTERS
@@ -26,11 +25,11 @@ data class SubstitutionKey(val alphabet: String) {
         }
 
         fun fromKeyword(keyword: String): SubstitutionKey {
-            val letters = keyword.uppercase().filter { it in 'A'..'Z' } + PLAIN_ALPHABET
+            val letters = keyword.uppercase().filter { it in 'A'..'Z' } + ALPHABET
             return SubstitutionKey(letters.toCharArray().distinct().joinToString(""))
         }
 
         fun random(random: Random): SubstitutionKey =
-            SubstitutionKey(PLAIN_ALPHABET.toList().shuffled(random).joinToString(""))
+            SubstitutionKey(ALPHABET.toList().shuffled(random).joinToString(""))
     }
 }

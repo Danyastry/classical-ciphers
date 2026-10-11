@@ -1,7 +1,8 @@
 package com.danyastry.encryption.feature.autokey.ui
 
+import com.danyastry.encryption.core.classical.Keyword
+import com.danyastry.encryption.core.classical.isAsciiLetter
 import com.danyastry.encryption.feature.autokey.AutokeyCipher
-import com.danyastry.encryption.feature.autokey.AutokeyKey
 
 enum class AutokeyMode { ENCRYPT, DECRYPT }
 
@@ -26,7 +27,7 @@ private val cipher = AutokeyCipher()
 internal fun AutokeyUiState.recalculated(): AutokeyUiState {
     if (primer.isEmpty()) return copy(isPrimerValid = false, output = "", alignment = emptyList())
 
-    val key = AutokeyKey(primer)
+    val key = Keyword(primer)
     val output = when (mode) {
         AutokeyMode.ENCRYPT -> cipher.encrypt(input, key)
         AutokeyMode.DECRYPT -> cipher.decrypt(input, key)
@@ -41,7 +42,7 @@ internal fun AutokeyUiState.recalculated(): AutokeyUiState {
 
 private fun align(input: String, output: String, keystream: String, primerLength: Int): List<AlignedLetter> =
     input.indices
-        .filter { input[it] in 'a'..'z' || input[it] in 'A'..'Z' }
+        .filter { input[it].isAsciiLetter() }
         .take(AutokeyUiState.MAX_ALIGNED_LETTERS)
         .mapIndexed { letterIndex, position ->
             AlignedLetter(

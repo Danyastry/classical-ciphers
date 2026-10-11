@@ -30,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
 import com.danyastry.encryption.core.ui.theme.EncryptionTheme
 import com.danyastry.encryption.feature.affine.AffineKey
 import com.danyastry.encryption.feature.affine.R
@@ -143,8 +144,8 @@ private fun ShiftSlider(shift: Int, onShiftChange: (Int) -> Unit) {
         Slider(
             value = shift.toFloat(),
             onValueChange = { onShiftChange(it.roundToInt()) },
-            valueRange = 0f..(AffineKey.ALPHABET_SIZE - 1).toFloat(),
-            steps = AffineKey.ALPHABET_SIZE - 2,
+            valueRange = 0f..(ALPHABET_SIZE - 1).toFloat(),
+            steps = ALPHABET_SIZE - 2,
         )
     }
 }

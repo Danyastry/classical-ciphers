@@ -1,34 +1,17 @@
 package com.danyastry.encryption.feature.beaufort
 
+import com.danyastry.encryption.core.classical.Keyword
+import com.danyastry.encryption.core.classical.mapLetters
 import com.danyastry.encryption.core.cryptoapi.TextCipher
 
-class BeaufortCipher : TextCipher<BeaufortKey> {
+class BeaufortCipher : TextCipher<Keyword> {
 
-    override fun encrypt(plaintext: String, key: BeaufortKey): String = transform(plaintext, key)
+    override fun encrypt(plaintext: String, key: Keyword): String = transform(plaintext, key)
 
-    override fun decrypt(ciphertext: String, key: BeaufortKey): String = transform(ciphertext, key)
+    override fun decrypt(ciphertext: String, key: Keyword): String = transform(ciphertext, key)
 
-    private fun transform(text: String, key: BeaufortKey): String {
-        var keyIndex = 0
-        return buildString(text.length) {
-            text.forEach { char ->
-                val base = when (char) {
-                    in 'a'..'z' -> 'a'
-                    in 'A'..'Z' -> 'A'
-                    else -> null
-                }
-                if (base == null) {
-                    append(char)
-                } else {
-                    val shift = key.shifts[keyIndex % key.shifts.size]
-                    append(base + (shift - (char - base) + ALPHABET_SIZE) % ALPHABET_SIZE)
-                    keyIndex++
-                }
-            }
-        }
-    }
-
-    private companion object {
-        const val ALPHABET_SIZE = 26
+    private fun transform(text: String, key: Keyword): String {
+        var position = 0
+        return text.mapLetters { key.shiftAt(position++) - it }
     }
 }

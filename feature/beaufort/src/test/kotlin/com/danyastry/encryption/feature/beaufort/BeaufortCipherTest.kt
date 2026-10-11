@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.beaufort
 
+import com.danyastry.encryption.core.classical.Keyword
 import com.danyastry.encryption.core.testing.assertRoundTrip
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -7,7 +8,7 @@ import org.junit.Test
 class BeaufortCipherTest {
 
     private val cipher = BeaufortCipher()
-    private val fortification = BeaufortKey("FORTIFICATION")
+    private val fortification = Keyword("FORTIFICATION")
 
     @Test
     fun `matches the reference example`() {
@@ -19,17 +20,17 @@ class BeaufortCipherTest {
 
     @Test
     fun `preserves case and leaves non letters untouched`() {
-        assertThat(cipher.encrypt("Hello, World!", BeaufortKey("KEY"))).isEqualTo("Danzq, Cwnnh!")
+        assertThat(cipher.encrypt("Hello, World!", Keyword("KEY"))).isEqualTo("Danzq, Cwnnh!")
     }
 
     @Test
     fun `differs from vigenere for the same key`() {
-        assertThat(cipher.encrypt("ATTACKATDAWN", BeaufortKey("LEMON"))).isEqualTo("LLTOLBETLNPR")
+        assertThat(cipher.encrypt("ATTACKATDAWN", Keyword("LEMON"))).isEqualTo("LLTOLBETLNPR")
     }
 
     @Test
     fun `keyword of A mirrors the alphabet like atbash shifted by one`() {
-        assertThat(cipher.encrypt("ABCXYZ", BeaufortKey("A"))).isEqualTo("AZYDCB")
+        assertThat(cipher.encrypt("ABCXYZ", Keyword("A"))).isEqualTo("AZYDCB")
     }
 
     @Test
@@ -37,7 +38,7 @@ class BeaufortCipherTest {
         val text = "The Quick Brown Fox Jumps Over The Lazy Dog, 123!"
 
         listOf("A", "Z", "KEY", "FORTIFICATION").forEach { keyword ->
-            val key = BeaufortKey(keyword)
+            val key = Keyword(keyword)
             assertThat(cipher.encrypt(cipher.encrypt(text, key), key)).isEqualTo(text)
         }
     }

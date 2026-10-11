@@ -25,6 +25,7 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "encryptionN1"
 
 include(":app")
+include(":core:classical")
 include(":core:crypto-api")
 include(":core:testing")
 include(":core:ui")

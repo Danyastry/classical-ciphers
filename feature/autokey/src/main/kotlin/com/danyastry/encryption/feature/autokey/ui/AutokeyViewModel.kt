@@ -1,7 +1,7 @@
 package com.danyastry.encryption.feature.autokey.ui
 
 import androidx.lifecycle.ViewModel
-import com.danyastry.encryption.feature.autokey.AutokeyKey
+import com.danyastry.encryption.core.classical.Keyword
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,7 +14,7 @@ class AutokeyViewModel : ViewModel() {
 
     fun onInputChange(input: String) = update { copy(input = input) }
 
-    fun onPrimerChange(primer: String) = update { copy(primer = AutokeyKey.normalize(primer)) }
+    fun onPrimerChange(primer: String) = update { copy(primer = Keyword.normalize(primer)) }
 
     fun onModeChange(mode: AutokeyMode) = update { copy(mode = mode) }
 

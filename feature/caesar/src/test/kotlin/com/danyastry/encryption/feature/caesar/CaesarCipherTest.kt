@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.caesar
 
+import com.danyastry.encryption.core.classical.ALPHABET_SIZE
 import com.danyastry.encryption.core.testing.assertRoundTrip
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
@@ -70,7 +71,7 @@ class CaesarCipherTest {
     fun `every shift maps the alphabet onto itself`() {
         val alphabet = ('a'..'z').joinToString("")
 
-        (0 until CaesarCipher.ALPHABET_SIZE).forEach { shift ->
+        (0 until ALPHABET_SIZE).forEach { shift ->
             val shifted = cipher.encrypt(alphabet, shift)
             assertThat(shifted.toSet()).isEqualTo(alphabet.toSet())
             assertThat(shifted.first()).isEqualTo('a' + shift)

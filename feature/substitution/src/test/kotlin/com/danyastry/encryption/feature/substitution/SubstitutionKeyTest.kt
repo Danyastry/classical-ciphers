@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.substitution
 
+import com.danyastry.encryption.core.classical.ALPHABET
 import com.google.common.truth.Truth.assertThat
 import kotlin.random.Random
 import org.junit.Assert.assertThrows
@@ -20,7 +21,7 @@ class SubstitutionKeyTest {
 
     @Test
     fun `empty keyword gives the plain alphabet`() {
-        assertThat(SubstitutionKey.fromKeyword("").alphabet).isEqualTo(SubstitutionKey.PLAIN_ALPHABET)
+        assertThat(SubstitutionKey.fromKeyword("").alphabet).isEqualTo(ALPHABET)
     }
 
     @Test
@@ -46,7 +47,7 @@ class SubstitutionKeyTest {
 
         repeat(100) {
             val key = SubstitutionKey.random(random)
-            assertThat(key.alphabet.toSet()).isEqualTo(SubstitutionKey.PLAIN_ALPHABET.toSet())
+            assertThat(key.alphabet.toSet()).isEqualTo(ALPHABET.toSet())
         }
     }
 

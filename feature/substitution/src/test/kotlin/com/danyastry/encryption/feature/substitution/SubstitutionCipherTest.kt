@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.substitution
 
+import com.danyastry.encryption.core.classical.ALPHABET
 import com.danyastry.encryption.core.testing.assertRoundTrip
 import com.google.common.truth.Truth.assertThat
 import kotlin.random.Random
@@ -25,14 +26,14 @@ class SubstitutionCipherTest {
 
     @Test
     fun `plain alphabet key is identity`() {
-        val identity = SubstitutionKey(SubstitutionKey.PLAIN_ALPHABET)
+        val identity = SubstitutionKey(ALPHABET)
 
         assertThat(cipher.encrypt("Nothing changes", identity)).isEqualTo("Nothing changes")
     }
 
     @Test
     fun `encrypting the plain alphabet reveals the key`() {
-        assertThat(cipher.encrypt(SubstitutionKey.PLAIN_ALPHABET, zebras)).isEqualTo(zebras.alphabet)
+        assertThat(cipher.encrypt(ALPHABET, zebras)).isEqualTo(zebras.alphabet)
     }
 
     @Test
