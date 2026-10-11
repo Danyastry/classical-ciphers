@@ -37,6 +37,7 @@ dependencies {
     implementation(projects.feature.autokey)
     implementation(projects.feature.playfair)
     implementation(projects.feature.hill)
+    implementation(projects.feature.railfence)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
