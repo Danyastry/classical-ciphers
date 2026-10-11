@@ -18,6 +18,7 @@ fun SecurityStatusBadge(status: SecurityStatus, modifier: Modifier = Modifier) {
     val colors = MaterialTheme.colorScheme
     val (container, content) = when (status) {
         SecurityStatus.RECOMMENDED -> colors.primaryContainer to colors.onPrimaryContainer
+        SecurityStatus.PERFECT_SECRECY -> colors.secondaryContainer to colors.onSecondaryContainer
         SecurityStatus.LEGACY -> colors.tertiaryContainer to colors.onTertiaryContainer
         SecurityStatus.BROKEN -> colors.errorContainer to colors.onErrorContainer
         SecurityStatus.NO_SECURITY -> colors.surfaceVariant to colors.onSurfaceVariant

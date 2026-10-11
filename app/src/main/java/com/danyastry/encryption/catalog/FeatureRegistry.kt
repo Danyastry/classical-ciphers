@@ -13,6 +13,7 @@ import com.danyastry.encryption.feature.columnar.ColumnarFeature
 import com.danyastry.encryption.feature.enigma.EnigmaFeature
 import com.danyastry.encryption.feature.foursquare.FourSquareFeature
 import com.danyastry.encryption.feature.hill.HillFeature
+import com.danyastry.encryption.feature.onetimepad.OneTimePadFeature
 import com.danyastry.encryption.feature.playfair.PlayfairFeature
 import com.danyastry.encryption.feature.polybius.PolybiusFeature
 import com.danyastry.encryption.feature.railfence.RailFenceFeature
@@ -46,5 +47,6 @@ object FeatureRegistry {
         FourSquareFeature,
         TwoSquareFeature,
         EnigmaFeature,
+        OneTimePadFeature,
     )
 }

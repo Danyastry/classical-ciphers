@@ -15,6 +15,7 @@
     <string name="category_cryptanalysis">Cryptanalysis</string>
 
     <string name="status_recommended">Recommended</string>
+    <string name="status_perfect_secrecy">Perfect secrecy</string>
     <string name="status_legacy">Legacy</string>
     <string name="status_broken">Broken</string>
     <string name="status_no_security">Not encryption</string>
