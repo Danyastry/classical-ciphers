@@ -30,6 +30,7 @@ dependencies {
     implementation(projects.feature.caesar)
     implementation(projects.feature.rot)
     implementation(projects.feature.atbash)
+    implementation(projects.feature.affine)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
