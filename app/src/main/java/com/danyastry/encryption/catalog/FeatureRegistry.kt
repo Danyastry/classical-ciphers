@@ -10,6 +10,7 @@ import com.danyastry.encryption.feature.caesar.CaesarFeature
 import com.danyastry.encryption.feature.columnar.ColumnarFeature
 import com.danyastry.encryption.feature.hill.HillFeature
 import com.danyastry.encryption.feature.playfair.PlayfairFeature
+import com.danyastry.encryption.feature.polybius.PolybiusFeature
 import com.danyastry.encryption.feature.railfence.RailFenceFeature
 import com.danyastry.encryption.feature.rot.RotFeature
 import com.danyastry.encryption.feature.scytale.ScytaleFeature
@@ -32,5 +33,6 @@ object FeatureRegistry {
         ColumnarFeature,
         ScytaleFeature,
         BaconFeature,
+        PolybiusFeature,
     )
 }

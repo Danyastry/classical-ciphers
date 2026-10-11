@@ -41,6 +41,7 @@ dependencies {
     implementation(projects.feature.columnar)
     implementation(projects.feature.scytale)
     implementation(projects.feature.bacon)
+    implementation(projects.feature.polybius)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)

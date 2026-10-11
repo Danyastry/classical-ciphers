@@ -1,0 +1,6 @@
+<resources>
+    <string name="polybius_keyword_hint">Optional. Leave empty for the standard square. J is merged with I.</string>
+    <string name="polybius_square_title">Square</string>
+    <string name="polybius_square_hint">Each letter becomes its row number followed by its column number</string>
+    <string name="polybius_error_code">Use pairs of digits from 1 to 5</string>
+</resources>
