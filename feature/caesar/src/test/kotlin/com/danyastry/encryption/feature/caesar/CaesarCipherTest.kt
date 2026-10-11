@@ -94,4 +94,19 @@ class CaesarCipherTest {
         assertThat(candidates[7].plaintext).isEqualTo("attack at dawn")
         assertThat(candidates[0].plaintext).isEqualTo(ciphertext)
     }
+
+    @Test
+    fun `frequency analysis finds the shift of english text`() {
+        val text = "Frequency analysis breaks the Caesar cipher because English uses some letters far more often than others"
+
+        (0 until 26).forEach { shift ->
+            assertThat(cipher.mostLikelyShift(cipher.encrypt(text, shift))).isEqualTo(shift)
+        }
+    }
+
+    @Test
+    fun `no shift is suggested for text without letters`() {
+        assertThat(cipher.mostLikelyShift("123 !?")).isNull()
+        assertThat(cipher.mostLikelyShift("")).isNull()
+    }
 }

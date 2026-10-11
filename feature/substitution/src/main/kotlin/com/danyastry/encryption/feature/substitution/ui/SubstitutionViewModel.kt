@@ -1,8 +1,12 @@
 package com.danyastry.encryption.feature.substitution.ui
 
 import androidx.lifecycle.ViewModel
+import com.danyastry.encryption.core.classical.ALPHABET
 import com.danyastry.encryption.core.classical.ALPHABET_SIZE
 import com.danyastry.encryption.core.ui.components.CipherMode
+import com.danyastry.encryption.feature.substitution.FrequencyAttack
+import com.danyastry.encryption.feature.substitution.SampleText
+import com.danyastry.encryption.feature.substitution.SubstitutionCipher
 import com.danyastry.encryption.feature.substitution.SubstitutionKey
 import java.security.SecureRandom
 import kotlin.random.Random
@@ -34,6 +38,34 @@ class SubstitutionViewModel(
     }
 
     fun onModeChange(mode: CipherMode) = update { copy(mode = mode) }
+
+    fun onGuessKey() = update { copy(keyword = "", keyText = FrequencyAttack.guessKey(input).alphabet) }
+
+    fun onSwapFirstChange(letter: String) = update { copy(swapFirst = singleLetter(letter)) }
+
+    fun onSwapSecondChange(letter: String) = update { copy(swapSecond = singleLetter(letter)) }
+
+    fun onSwap() = update {
+        if (keyError != null || swapFirst.isEmpty() || swapSecond.isEmpty()) return@update this
+        copy(
+            keyword = "",
+            keyText = FrequencyAttack.swapPlaintextLetters(SubstitutionKey(keyText), swapFirst[0], swapSecond[0]).alphabet,
+            swapFirst = "",
+            swapSecond = "",
+        )
+    }
+
+    fun onLoadSample() = update {
+        val secret = SubstitutionKey.random(random)
+        copy(
+            mode = CipherMode.DECRYPT,
+            input = SubstitutionCipher().encrypt(SampleText.FREQUENCY_ANALYSIS, secret),
+            keyword = "",
+            keyText = ALPHABET,
+        )
+    }
+
+    private fun singleLetter(text: String): String = text.uppercase().filter { it in 'A'..'Z' }.takeLast(1)
 
     fun onUseOutputAsInput() = update { copy(input = output, mode = mode.toggled()) }
 

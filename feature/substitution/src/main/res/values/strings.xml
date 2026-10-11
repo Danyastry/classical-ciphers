@@ -6,4 +6,14 @@
     <string name="substitution_error_invalid_characters">Only letters A–Z are allowed</string>
     <string name="substitution_error_duplicate_letters">Every letter must appear exactly once</string>
     <string name="substitution_mapping_title">Letter mapping</string>
+    <string name="substitution_load_sample">Load a sample to crack</string>
+    <string name="substitution_attack_title">Frequency analysis</string>
+    <string name="substitution_attack_hint">The most common cipher letter is probably E, the next one T, and so on</string>
+    <string name="substitution_attack_table">Letters from most to least common</string>
+    <string name="substitution_attack_ciphertext">Cipher</string>
+    <string name="substitution_attack_english">English</string>
+    <string name="substitution_attack_guess">Guess key from frequencies</string>
+    <string name="substitution_attack_swap_hint">Spot a wrong letter in the plaintext? Swap two plaintext letters.</string>
+    <string name="substitution_attack_swap">Swap</string>
+    <string name="substitution_attack_with">with</string>
 </resources>

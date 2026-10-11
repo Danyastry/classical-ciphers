@@ -10,6 +10,7 @@ data class CaesarUiState(
     val input: String = "",
     val output: String = "",
     val candidates: List<BruteForceCandidate> = emptyList(),
+    val mostLikelyShift: Int? = null,
 )
 
 private val cipher = CaesarCipher()
@@ -20,4 +21,5 @@ internal fun CaesarUiState.recalculated(): CaesarUiState = copy(
         CipherMode.DECRYPT -> cipher.decrypt(input, shift)
     },
     candidates = if (mode == CipherMode.DECRYPT && input.isNotEmpty()) cipher.bruteForce(input) else emptyList(),
+    mostLikelyShift = if (mode == CipherMode.DECRYPT) cipher.mostLikelyShift(input) else null,
 )

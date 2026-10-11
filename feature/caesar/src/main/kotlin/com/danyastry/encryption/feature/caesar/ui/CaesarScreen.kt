@@ -2,6 +2,7 @@ package com.danyastry.encryption.feature.caesar.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -88,15 +89,23 @@ fun CaesarScreen(
         }
         if (state.candidates.isNotEmpty()) {
             item {
-                Text(
-                    text = stringResource(R.string.caesar_brute_force_title),
-                    style = MaterialTheme.typography.titleMedium,
-                )
+                Column {
+                    Text(
+                        text = stringResource(R.string.caesar_brute_force_title),
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                    Text(
+                        text = stringResource(R.string.caesar_brute_force_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
             }
             items(state.candidates, key = { it.shift }) { candidate ->
                 CandidateRow(
                     candidate = candidate,
                     isSelected = candidate.shift == state.shift,
+                    isMostLikely = candidate.shift == state.mostLikelyShift,
                     onClick = { onCandidateSelected(candidate.shift) },
                 )
             }
@@ -105,7 +114,12 @@ fun CaesarScreen(
 }
 
 @Composable
-private fun CandidateRow(candidate: BruteForceCandidate, isSelected: Boolean, onClick: () -> Unit) {
+private fun CandidateRow(
+    candidate: BruteForceCandidate,
+    isSelected: Boolean,
+    isMostLikely: Boolean,
+    onClick: () -> Unit,
+) {
     ListItem(
         leadingContent = {
             Text(
@@ -120,6 +134,17 @@ private fun CandidateRow(candidate: BruteForceCandidate, isSelected: Boolean, on
                 fontFamily = FontFamily.Monospace,
                 maxLines = 1,
             )
+        },
+        trailingContent = if (isMostLikely) {
+            {
+                Text(
+                    text = stringResource(R.string.caesar_most_likely),
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
+        } else {
+            null
         },
         modifier = Modifier.clickable(onClick = onClick),
     )
