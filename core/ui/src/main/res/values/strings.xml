@@ -1,0 +1,21 @@
+<resources>
+    <string name="category_classical">Classical ciphers</string>
+    <string name="category_encoding">Encodings</string>
+    <string name="category_symmetric">Symmetric ciphers</string>
+    <string name="category_stream">Stream ciphers</string>
+    <string name="category_asymmetric">Asymmetric encryption</string>
+    <string name="category_key_exchange">Key exchange</string>
+    <string name="category_signature">Digital signatures</string>
+    <string name="category_hash">Hash functions</string>
+    <string name="category_mac">Message authentication</string>
+    <string name="category_kdf">Key derivation</string>
+    <string name="category_android_platform">Android platform security</string>
+    <string name="category_protocol">Protocols and formats</string>
+    <string name="category_advanced">Advanced topics</string>
+    <string name="category_cryptanalysis">Cryptanalysis</string>
+
+    <string name="status_recommended">Recommended</string>
+    <string name="status_legacy">Legacy</string>
+    <string name="status_broken">Broken</string>
+    <string name="status_no_security">Not encryption</string>
+</resources>
