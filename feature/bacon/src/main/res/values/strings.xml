@@ -1,0 +1,16 @@
+<resources>
+    <string name="bacon_alphabet_classic">24 letters (I=J, U=V)</string>
+    <string name="bacon_alphabet_modern">26 letters</string>
+    <string name="bacon_source_groups">A/B groups</string>
+    <string name="bacon_source_case">Letter case</string>
+    <string name="bacon_input_code">A/B code</string>
+    <string name="bacon_input_stegotext">Text with hidden message</string>
+    <string name="bacon_error_incomplete">The code must be complete groups of five A/B symbols</string>
+    <string name="bacon_hide_title">Hide the message in ordinary text</string>
+    <string name="bacon_cover_label">Cover text</string>
+    <string name="bacon_cover_hint">Needed: %1$d, available: %2$d. Lowercase means A, uppercase means B.</string>
+    <string name="bacon_cover_too_short">Needed: %1$d, available: %2$d. Add more words to the cover text.</string>
+    <string name="bacon_stegotext_label">Text with hidden message</string>
+    <string name="bacon_stegotext_placeholder">Type a message above to hide it here</string>
+    <string name="bacon_reveal_action">Reveal it</string>
+</resources>
