@@ -1,0 +1,25 @@
+package com.danyastry.encryption.feature.autokey
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import com.danyastry.encryption.core.cryptoapi.AlgorithmCategory
+import com.danyastry.encryption.core.cryptoapi.AlgorithmInfo
+import com.danyastry.encryption.core.cryptoapi.SecurityStatus
+import com.danyastry.encryption.core.ui.FeatureEntry
+import com.danyastry.encryption.feature.autokey.ui.AutokeyRoute
+
+object AutokeyFeature : FeatureEntry {
+
+    override val info = AlgorithmInfo(
+        id = "autokey",
+        name = "Autokey cipher",
+        category = AlgorithmCategory.CLASSICAL,
+        securityStatus = SecurityStatus.BROKEN,
+        summary = "Vigenère variant whose key is a short primer followed by the plaintext itself",
+    )
+
+    @Composable
+    override fun Content(modifier: Modifier) {
+        AutokeyRoute(modifier = modifier)
+    }
+}

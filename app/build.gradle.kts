@@ -34,6 +34,7 @@ dependencies {
     implementation(projects.feature.substitution)
     implementation(projects.feature.vigenere)
     implementation(projects.feature.beaufort)
+    implementation(projects.feature.autokey)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
