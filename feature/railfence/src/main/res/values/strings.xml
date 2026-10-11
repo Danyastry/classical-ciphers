@@ -1,0 +1,6 @@
+<resources>
+    <string name="railfence_rails_label">Rails: %1$d</string>
+    <string name="railfence_input_hint">Every character is moved, including spaces and punctuation</string>
+    <string name="railfence_zigzag_title">Zigzag</string>
+    <string name="railfence_zigzag_hint">The text is written down and up across the rails, then read rail by rail</string>
+</resources>
