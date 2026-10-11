@@ -1,7 +1,4 @@
 <resources>
-    <string name="substitution_mode_encrypt">Encrypt</string>
-    <string name="substitution_mode_decrypt">Decrypt</string>
-    <string name="substitution_keyword_label">Keyword</string>
     <string name="substitution_key_label">Key alphabet</string>
     <string name="substitution_key_count">26! ≈ 4 × 10²⁶ possible keys, too many to brute force</string>
     <string name="substitution_random_key">Generate random key</string>
@@ -9,10 +6,4 @@
     <string name="substitution_error_invalid_characters">Only letters A–Z are allowed</string>
     <string name="substitution_error_duplicate_letters">Every letter must appear exactly once</string>
     <string name="substitution_mapping_title">Letter mapping</string>
-    <string name="substitution_input_plaintext">Plaintext</string>
-    <string name="substitution_input_ciphertext">Ciphertext</string>
-    <string name="substitution_output_ciphertext">Ciphertext</string>
-    <string name="substitution_output_plaintext">Plaintext</string>
-    <string name="substitution_output_placeholder">Type something above</string>
-    <string name="substitution_use_output_as_input">Use as input</string>
 </resources>

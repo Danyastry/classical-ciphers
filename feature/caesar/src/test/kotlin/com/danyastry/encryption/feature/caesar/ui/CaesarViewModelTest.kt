@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.caesar.ui
 
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
@@ -12,7 +13,7 @@ class CaesarViewModelTest {
 
     @Test
     fun `starts in encrypt mode with shift three and empty output`() {
-        assertThat(state.mode).isEqualTo(CaesarMode.ENCRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.ENCRYPT)
         assertThat(state.shift).isEqualTo(3)
         assertThat(state.output).isEmpty()
         assertThat(state.candidates).isEmpty()
@@ -44,7 +45,7 @@ class CaesarViewModelTest {
 
     @Test
     fun `decrypt mode decrypts and offers brute force candidates`() {
-        viewModel.onModeChange(CaesarMode.DECRYPT)
+        viewModel.onModeChange(CipherMode.DECRYPT)
         viewModel.onInputChange("Khoor")
 
         assertThat(state.output).isEqualTo("Hello")
@@ -54,11 +55,11 @@ class CaesarViewModelTest {
 
     @Test
     fun `no brute force candidates for empty input or in encrypt mode`() {
-        viewModel.onModeChange(CaesarMode.DECRYPT)
+        viewModel.onModeChange(CipherMode.DECRYPT)
         assertThat(state.candidates).isEmpty()
 
         viewModel.onInputChange("abc")
-        viewModel.onModeChange(CaesarMode.ENCRYPT)
+        viewModel.onModeChange(CipherMode.ENCRYPT)
         assertThat(state.candidates).isEmpty()
     }
 
@@ -68,14 +69,14 @@ class CaesarViewModelTest {
 
         viewModel.onUseOutputAsInput()
 
-        assertThat(state.mode).isEqualTo(CaesarMode.DECRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.DECRYPT)
         assertThat(state.input).isEqualTo("Dwwdfn dw gdzq")
         assertThat(state.output).isEqualTo("Attack at dawn")
     }
 
     @Test
     fun `selecting a brute force candidate decrypts with that shift`() {
-        viewModel.onModeChange(CaesarMode.DECRYPT)
+        viewModel.onModeChange(CipherMode.DECRYPT)
         viewModel.onShiftChange(0)
         viewModel.onInputChange("Hfjxfw")
 

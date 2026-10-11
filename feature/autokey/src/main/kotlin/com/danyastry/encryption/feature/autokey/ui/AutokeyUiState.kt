@@ -1,17 +1,15 @@
 package com.danyastry.encryption.feature.autokey.ui
 
+import com.danyastry.encryption.core.classical.AlignedLetter
 import com.danyastry.encryption.core.classical.Keyword
-import com.danyastry.encryption.core.classical.isAsciiLetter
+import com.danyastry.encryption.core.classical.alignLetters
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.danyastry.encryption.feature.autokey.AutokeyCipher
-
-enum class AutokeyMode { ENCRYPT, DECRYPT }
-
-data class AlignedLetter(val input: Char, val key: Char, val output: Char, val isPrimer: Boolean)
 
 data class AutokeyUiState(
     val primer: String = DEFAULT_PRIMER,
     val isPrimerValid: Boolean = true,
-    val mode: AutokeyMode = AutokeyMode.ENCRYPT,
+    val mode: CipherMode = CipherMode.ENCRYPT,
     val input: String = "",
     val output: String = "",
     val alignment: List<AlignedLetter> = emptyList(),
@@ -29,26 +27,13 @@ internal fun AutokeyUiState.recalculated(): AutokeyUiState {
 
     val key = Keyword(primer)
     val output = when (mode) {
-        AutokeyMode.ENCRYPT -> cipher.encrypt(input, key)
-        AutokeyMode.DECRYPT -> cipher.decrypt(input, key)
+        CipherMode.ENCRYPT -> cipher.encrypt(input, key)
+        CipherMode.DECRYPT -> cipher.decrypt(input, key)
     }
-    val plaintext = if (mode == AutokeyMode.ENCRYPT) input else output
+    val keystream = cipher.keystream(if (mode == CipherMode.ENCRYPT) input else output, key)
     return copy(
         isPrimerValid = true,
         output = output,
-        alignment = align(input, output, cipher.keystream(plaintext, key), primer.length),
+        alignment = alignLetters(input, output, AutokeyUiState.MAX_ALIGNED_LETTERS) { keystream[it] },
     )
 }
-
-private fun align(input: String, output: String, keystream: String, primerLength: Int): List<AlignedLetter> =
-    input.indices
-        .filter { input[it].isAsciiLetter() }
-        .take(AutokeyUiState.MAX_ALIGNED_LETTERS)
-        .mapIndexed { letterIndex, position ->
-            AlignedLetter(
-                input = input[position],
-                key = keystream[letterIndex],
-                output = output[position],
-                isPrimer = letterIndex < primerLength,
-            )
-        }

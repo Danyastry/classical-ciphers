@@ -2,6 +2,7 @@ package com.danyastry.encryption.feature.substitution.ui
 
 import androidx.lifecycle.ViewModel
 import com.danyastry.encryption.core.classical.ALPHABET_SIZE
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.danyastry.encryption.feature.substitution.SubstitutionKey
 import java.security.SecureRandom
 import kotlin.random.Random
@@ -32,14 +33,9 @@ class SubstitutionViewModel(
         copy(keyword = "", keyText = SubstitutionKey.random(random).alphabet)
     }
 
-    fun onModeChange(mode: SubstitutionMode) = update { copy(mode = mode) }
+    fun onModeChange(mode: CipherMode) = update { copy(mode = mode) }
 
-    fun onUseOutputAsInput() = update {
-        copy(
-            input = output,
-            mode = if (mode == SubstitutionMode.ENCRYPT) SubstitutionMode.DECRYPT else SubstitutionMode.ENCRYPT,
-        )
-    }
+    fun onUseOutputAsInput() = update { copy(input = output, mode = mode.toggled()) }
 
     private fun update(transform: SubstitutionUiState.() -> SubstitutionUiState) {
         _state.update { it.transform().recalculated() }

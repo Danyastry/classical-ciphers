@@ -2,6 +2,7 @@ package com.danyastry.encryption.feature.affine.ui
 
 import androidx.lifecycle.ViewModel
 import com.danyastry.encryption.core.classical.ALPHABET_SIZE
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.danyastry.encryption.feature.affine.AffineKey
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -24,14 +25,9 @@ class AffineViewModel : ViewModel() {
         copy(key = key.copy(b = b.coerceIn(0, ALPHABET_SIZE - 1)))
     }
 
-    fun onModeChange(mode: AffineMode) = update { copy(mode = mode) }
+    fun onModeChange(mode: CipherMode) = update { copy(mode = mode) }
 
-    fun onUseOutputAsInput() = update {
-        copy(
-            input = output,
-            mode = if (mode == AffineMode.ENCRYPT) AffineMode.DECRYPT else AffineMode.ENCRYPT,
-        )
-    }
+    fun onUseOutputAsInput() = update { copy(input = output, mode = mode.toggled()) }
 
     private fun update(transform: AffineUiState.() -> AffineUiState) {
         _state.update { it.transform().recalculated() }

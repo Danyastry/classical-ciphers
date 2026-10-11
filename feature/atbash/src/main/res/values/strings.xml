@@ -1,7 +1,3 @@
 <resources>
     <string name="atbash_mapping_title">Letter mapping</string>
-    <string name="atbash_input_label">Text</string>
-    <string name="atbash_output_label">Result</string>
-    <string name="atbash_output_placeholder">Type something above</string>
-    <string name="atbash_use_output_as_input">Use as input</string>
 </resources>

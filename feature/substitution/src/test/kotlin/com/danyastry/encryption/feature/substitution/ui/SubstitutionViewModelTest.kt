@@ -1,6 +1,7 @@
 package com.danyastry.encryption.feature.substitution.ui
 
 import com.danyastry.encryption.core.classical.ALPHABET
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.danyastry.encryption.feature.substitution.KeyError
 import com.google.common.truth.Truth.assertThat
 import kotlin.random.Random
@@ -18,7 +19,7 @@ class SubstitutionViewModelTest {
         assertThat(state.keyword).isEqualTo("ZEBRAS")
         assertThat(state.keyText).isEqualTo("ZEBRASCDFGHIJKLMNOPQTUVWXY")
         assertThat(state.keyError).isNull()
-        assertThat(state.mode).isEqualTo(SubstitutionMode.ENCRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.ENCRYPT)
     }
 
     @Test
@@ -84,7 +85,7 @@ class SubstitutionViewModelTest {
 
         viewModel.onUseOutputAsInput()
 
-        assertThat(state.mode).isEqualTo(SubstitutionMode.DECRYPT)
+        assertThat(state.mode).isEqualTo(CipherMode.DECRYPT)
         assertThat(state.output).isEqualTo("Attack at dawn")
     }
 }

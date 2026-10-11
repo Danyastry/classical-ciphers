@@ -1,16 +1,15 @@
 package com.danyastry.encryption.feature.substitution.ui
 
+import com.danyastry.encryption.core.ui.components.CipherMode
 import com.danyastry.encryption.feature.substitution.KeyError
 import com.danyastry.encryption.feature.substitution.SubstitutionCipher
 import com.danyastry.encryption.feature.substitution.SubstitutionKey
-
-enum class SubstitutionMode { ENCRYPT, DECRYPT }
 
 data class SubstitutionUiState(
     val keyword: String = DEFAULT_KEYWORD,
     val keyText: String = SubstitutionKey.fromKeyword(DEFAULT_KEYWORD).alphabet,
     val keyError: KeyError? = null,
-    val mode: SubstitutionMode = SubstitutionMode.ENCRYPT,
+    val mode: CipherMode = CipherMode.ENCRYPT,
     val input: String = "",
     val output: String = "",
 ) {
@@ -29,8 +28,8 @@ internal fun SubstitutionUiState.recalculated(): SubstitutionUiState {
     return copy(
         keyError = null,
         output = when (mode) {
-            SubstitutionMode.ENCRYPT -> cipher.encrypt(input, key)
-            SubstitutionMode.DECRYPT -> cipher.decrypt(input, key)
+            CipherMode.ENCRYPT -> cipher.encrypt(input, key)
+            CipherMode.DECRYPT -> cipher.decrypt(input, key)
         },
     )
 }

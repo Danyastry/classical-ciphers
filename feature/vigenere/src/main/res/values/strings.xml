@@ -1,13 +1,4 @@
 <resources>
-    <string name="vigenere_mode_encrypt">Encrypt</string>
-    <string name="vigenere_mode_decrypt">Decrypt</string>
-    <string name="vigenere_keyword_label">Keyword</string>
     <string name="vigenere_keyword_hint">Each letter is a shift: A = 0, B = 1, … Z = 25</string>
-    <string name="vigenere_keyword_error">Enter at least one letter A–Z</string>
-    <string name="vigenere_plaintext">Plaintext</string>
-    <string name="vigenere_ciphertext">Ciphertext</string>
-    <string name="vigenere_output_placeholder">Type something above</string>
-    <string name="vigenere_use_output_as_input">Use as input</string>
     <string name="vigenere_alignment_title">How the keyword lines up</string>
-    <string name="vigenere_alignment_key">Key</string>
 </resources>

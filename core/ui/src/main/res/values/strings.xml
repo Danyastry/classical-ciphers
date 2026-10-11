@@ -18,4 +18,16 @@
     <string name="status_legacy">Legacy</string>
     <string name="status_broken">Broken</string>
     <string name="status_no_security">Not encryption</string>
+
+    <string name="mode_encrypt">Encrypt</string>
+    <string name="mode_decrypt">Decrypt</string>
+    <string name="label_plaintext">Plaintext</string>
+    <string name="label_ciphertext">Ciphertext</string>
+    <string name="label_text">Text</string>
+    <string name="label_result">Result</string>
+    <string name="label_key">Key</string>
+    <string name="label_keyword">Keyword</string>
+    <string name="output_placeholder">Type something above</string>
+    <string name="use_output_as_input">Use as input</string>
+    <string name="error_letters_required">Enter at least one letter A–Z</string>
 </resources>
