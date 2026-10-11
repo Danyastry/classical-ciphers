@@ -1,0 +1,12 @@
+<resources>
+    <string name="hill_size_option">%1$d × %2$d</string>
+    <string name="hill_key_label">Key letters (%1$d)</string>
+    <string name="hill_key_valid">Determinant is %1$d: coprime with 26, so the key can be inverted</string>
+    <string name="hill_error_wrong_length">Key length must be %1$d, using letters A–Z</string>
+    <string name="hill_error_not_invertible">Determinant is %1$d: it shares a factor with 26, so this key cannot be decrypted</string>
+    <string name="hill_random_key">Generate random key</string>
+    <string name="hill_key_matrix_title">Key matrix</string>
+    <string name="hill_inverse_matrix_title">Inverse mod 26</string>
+    <string name="hill_input_hint">Only letters A–Z are kept, and the text is padded with X to a multiple of %1$d</string>
+    <string name="hill_error_incomplete">Ciphertext length must be a multiple of %1$d</string>
+</resources>
