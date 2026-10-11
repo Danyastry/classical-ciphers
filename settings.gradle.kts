@@ -31,3 +31,4 @@ include(":core:ui")
 
 include(":feature:caesar")
 include(":feature:rot")
+include(":feature:atbash")
