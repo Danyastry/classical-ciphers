@@ -1,0 +1,6 @@
+<resources>
+    <string name="scytale_turns_label">Letters around the rod: %1$d</string>
+    <string name="scytale_input_hint">Every character is moved, including spaces and punctuation</string>
+    <string name="scytale_rod_title">Strip on the rod</string>
+    <string name="scytale_rod_hint">Each row is one side of the rod. Unwinding the strip reads the columns top to bottom.</string>
+</resources>
