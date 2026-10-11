@@ -1,0 +1,11 @@
+<resources>
+    <string name="playfair_keyword_hint">J is merged with I. Repeated letters are skipped.</string>
+    <string name="playfair_square_title">Key square</string>
+    <string name="playfair_error_odd">Ciphertext must have an even number of letters</string>
+    <string name="playfair_steps_title">Pairs and the rule used</string>
+    <string name="playfair_rule_same_row_right">same row: shift right</string>
+    <string name="playfair_rule_same_row_left">same row: shift left</string>
+    <string name="playfair_rule_same_column_down">same column: shift down</string>
+    <string name="playfair_rule_same_column_up">same column: shift up</string>
+    <string name="playfair_rule_rectangle">rectangle: swap columns</string>
+</resources>
