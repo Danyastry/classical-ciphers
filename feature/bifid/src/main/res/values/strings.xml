@@ -1,0 +1,11 @@
+<resources>
+    <string name="bifid_keyword_hint">Fills the 5×5 square first. J is merged with I.</string>
+    <string name="bifid_square_title">Square</string>
+    <string name="bifid_period_whole">Period: whole message</string>
+    <string name="bifid_period_label">Period: %1$d</string>
+    <string name="bifid_input_hint">Only letters A–Z are kept</string>
+    <string name="bifid_coordinates_title">Coordinates</string>
+    <string name="bifid_coordinates_hint">Encryption reads all row numbers, then all column numbers, as new pairs</string>
+    <string name="bifid_row">Row</string>
+    <string name="bifid_column">Column</string>
+</resources>

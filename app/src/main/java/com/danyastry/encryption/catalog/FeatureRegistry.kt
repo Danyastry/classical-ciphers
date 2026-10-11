@@ -7,6 +7,7 @@ import com.danyastry.encryption.feature.atbash.AtbashFeature
 import com.danyastry.encryption.feature.autokey.AutokeyFeature
 import com.danyastry.encryption.feature.bacon.BaconFeature
 import com.danyastry.encryption.feature.beaufort.BeaufortFeature
+import com.danyastry.encryption.feature.bifid.BifidFeature
 import com.danyastry.encryption.feature.caesar.CaesarFeature
 import com.danyastry.encryption.feature.columnar.ColumnarFeature
 import com.danyastry.encryption.feature.hill.HillFeature
@@ -36,5 +37,6 @@ object FeatureRegistry {
         BaconFeature,
         PolybiusFeature,
         AdfgvxFeature,
+        BifidFeature,
     )
 }

@@ -43,6 +43,7 @@ dependencies {
     implementation(projects.feature.bacon)
     implementation(projects.feature.polybius)
     implementation(projects.feature.adfgvx)
+    implementation(projects.feature.bifid)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
