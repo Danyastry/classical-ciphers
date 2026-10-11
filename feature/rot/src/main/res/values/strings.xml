@@ -1,0 +1,10 @@
+<resources>
+    <string name="rot_variant_rot13">ROT13</string>
+    <string name="rot_variant_rot47">ROT47</string>
+    <string name="rot_description_rot13">Rotates letters A–Z by 13 places. Digits and symbols stay the same.</string>
+    <string name="rot_description_rot47">Rotates every printable ASCII character from ! to ~ by 47 places, including digits and symbols.</string>
+    <string name="rot_input_label">Text</string>
+    <string name="rot_output_label">Result</string>
+    <string name="rot_output_placeholder">Type something above</string>
+    <string name="rot_use_output_as_input">Use as input</string>
+</resources>

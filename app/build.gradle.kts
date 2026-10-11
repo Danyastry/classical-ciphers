@@ -28,6 +28,7 @@ dependencies {
     implementation(projects.core.ui)
 
     implementation(projects.feature.caesar)
+    implementation(projects.feature.rot)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
