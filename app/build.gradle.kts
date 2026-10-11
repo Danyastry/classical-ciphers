@@ -32,6 +32,7 @@ dependencies {
     implementation(projects.feature.atbash)
     implementation(projects.feature.affine)
     implementation(projects.feature.substitution)
+    implementation(projects.feature.vigenere)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
