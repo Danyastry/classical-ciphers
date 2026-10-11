@@ -30,3 +30,4 @@ include(":core:testing")
 include(":core:ui")
 
 include(":feature:caesar")
+include(":feature:rot")
