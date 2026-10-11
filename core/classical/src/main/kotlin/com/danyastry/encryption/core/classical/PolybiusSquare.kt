@@ -30,6 +30,7 @@ class PolybiusSquare private constructor(val alphabet: String, val letters: Stri
 
     companion object {
         const val LATIN_25 = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
+        const val LATIN_25_NO_Q = "ABCDEFGHIJKLMNOPRSTUVWXYZ"
         const val ALPHANUMERIC_36 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
         fun fromKeyword(keyword: String = "", alphabet: String = LATIN_25): PolybiusSquare {

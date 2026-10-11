@@ -1,0 +1,10 @@
+<resources>
+    <string name="foursquare_alphabet_merge">I = J</string>
+    <string name="foursquare_alphabet_omit_q">No Q</string>
+    <string name="foursquare_first_keyword">Upper right keyword</string>
+    <string name="foursquare_second_keyword">Lower left keyword</string>
+    <string name="foursquare_squares_title">Squares</string>
+    <string name="foursquare_squares_hint">Find the pair in the plain squares, then read the other two corners of the rectangle in the keyed squares</string>
+    <string name="foursquare_input_hint">Only letters are kept, and an odd last letter is padded with X</string>
+    <string name="foursquare_error_odd">Ciphertext must have an even number of letters</string>
+</resources>

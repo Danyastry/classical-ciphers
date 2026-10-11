@@ -29,6 +29,14 @@ class PolybiusSquareTest {
     }
 
     @Test
+    fun `square without Q keeps J and drops Q`() {
+        val square = PolybiusSquare.fromKeyword("EXAMPLE", PolybiusSquare.LATIN_25_NO_Q)
+
+        assertThat(square.rows).containsExactly("EXAMP", "LBCDF", "GHIJK", "NORST", "UVWYZ").inOrder()
+        assertThat(square.normalize("Quick jump")).isEqualTo("UICKJUMP")
+    }
+
+    @Test
     fun `alphanumeric square is 6x6 and keeps J and digits`() {
         val square = PolybiusSquare.fromKeyword("ph0qg64mea1yl2nofdxkr3cvs5zw7bj9uti8", PolybiusSquare.ALPHANUMERIC_36)
 
