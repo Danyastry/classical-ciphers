@@ -1,30 +1,34 @@
 package com.danyastry.encryption.feature.playfair
 
+import com.danyastry.encryption.core.classical.PolybiusSquare
 import com.danyastry.encryption.core.cryptoapi.TextCipher
 
 enum class PlayfairRule { SAME_ROW, SAME_COLUMN, RECTANGLE }
 
 data class PlayfairStep(val input: String, val output: String, val rule: PlayfairRule)
 
-class PlayfairCipher : TextCipher<PlayfairKey> {
+class PlayfairCipher : TextCipher<PolybiusSquare> {
 
-    override fun encrypt(plaintext: String, key: PlayfairKey): String =
+    override fun encrypt(plaintext: String, key: PolybiusSquare): String =
         encryptSteps(plaintext, key).joinToString("") { it.output }
 
-    override fun decrypt(ciphertext: String, key: PlayfairKey): String =
+    override fun decrypt(ciphertext: String, key: PolybiusSquare): String =
         decryptSteps(ciphertext, key).joinToString("") { it.output }
 
-    fun encryptSteps(plaintext: String, key: PlayfairKey): List<PlayfairStep> =
-        digraphs(plaintext).map { transform(it, key, direction = 1) }
+    fun encryptSteps(plaintext: String, key: PolybiusSquare): List<PlayfairStep> {
+        requireLatinSquare(key)
+        return digraphs(plaintext).map { transform(it, key, direction = 1) }
+    }
 
-    fun decryptSteps(ciphertext: String, key: PlayfairKey): List<PlayfairStep> {
-        val letters = PlayfairKey.normalize(ciphertext)
+    fun decryptSteps(ciphertext: String, key: PolybiusSquare): List<PlayfairStep> {
+        requireLatinSquare(key)
+        val letters = normalize(ciphertext)
         require(letters.length % 2 == 0) { "Playfair ciphertext must have an even number of letters, was ${letters.length}" }
         return letters.chunked(2).map { transform(it, key, direction = -1) }
     }
 
     fun digraphs(plaintext: String): List<String> {
-        val letters = PlayfairKey.normalize(plaintext)
+        val letters = normalize(plaintext)
         val pairs = mutableListOf<String>()
         var index = 0
         while (index < letters.length) {
@@ -43,7 +47,11 @@ class PlayfairCipher : TextCipher<PlayfairKey> {
 
     private fun fillerFor(letter: Char): Char = if (letter == 'X') 'Q' else 'X'
 
-    private fun transform(pair: String, key: PlayfairKey, direction: Int): PlayfairStep {
+    private fun requireLatinSquare(key: PolybiusSquare) {
+        require(key.alphabet == PolybiusSquare.LATIN_25) { "Playfair needs the 25 letter square without J" }
+    }
+
+    private fun transform(pair: String, key: PolybiusSquare, direction: Int): PlayfairStep {
         val (a, b) = pair[0] to pair[1]
         val rowA = key.rowOf(a)
         val columnA = key.columnOf(a)
@@ -66,5 +74,9 @@ class PlayfairCipher : TextCipher<PlayfairKey> {
                 rule = PlayfairRule.RECTANGLE,
             )
         }
+    }
+
+    companion object {
+        fun normalize(text: String): String = PolybiusSquare.normalize(text, PolybiusSquare.LATIN_25)
     }
 }
