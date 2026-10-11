@@ -28,3 +28,5 @@ include(":app")
 include(":core:crypto-api")
 include(":core:testing")
 include(":core:ui")
+
+include(":feature:caesar")

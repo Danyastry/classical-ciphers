@@ -12,6 +12,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             add("implementation", project(":core:crypto-api"))
             add("implementation", project(":core:ui"))
             add("implementation", libs.library("androidx-material3"))
+            add("implementation", libs.library("androidx-lifecycle-viewmodel-compose"))
+            add("implementation", libs.library("androidx-lifecycle-runtime-compose"))
             add("testImplementation", project(":core:testing"))
         }
     }

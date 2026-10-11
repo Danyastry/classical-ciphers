@@ -1,0 +1,12 @@
+<resources>
+    <string name="caesar_mode_encrypt">Encrypt</string>
+    <string name="caesar_mode_decrypt">Decrypt</string>
+    <string name="caesar_shift_label">Shift: %1$d</string>
+    <string name="caesar_input_plaintext">Plaintext</string>
+    <string name="caesar_input_ciphertext">Ciphertext</string>
+    <string name="caesar_output_ciphertext">Ciphertext</string>
+    <string name="caesar_output_plaintext">Plaintext</string>
+    <string name="caesar_output_placeholder">Type something above</string>
+    <string name="caesar_use_output_as_input">Use as input</string>
+    <string name="caesar_brute_force_title">Brute force: every possible shift</string>
+</resources>
