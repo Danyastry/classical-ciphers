@@ -1,6 +1,7 @@
 package com.danyastry.encryption.catalog
 
 import com.danyastry.encryption.core.ui.FeatureEntry
+import com.danyastry.encryption.feature.adfgvx.AdfgvxFeature
 import com.danyastry.encryption.feature.affine.AffineFeature
 import com.danyastry.encryption.feature.atbash.AtbashFeature
 import com.danyastry.encryption.feature.autokey.AutokeyFeature
@@ -34,5 +35,6 @@ object FeatureRegistry {
         ScytaleFeature,
         BaconFeature,
         PolybiusFeature,
+        AdfgvxFeature,
     )
 }

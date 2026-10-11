@@ -1,0 +1,12 @@
+<resources>
+    <string name="adfgvx_square_keyword_label">Square keyword</string>
+    <string name="adfgvx_square_keyword_hint">Letters and digits fill the 6×6 square first, the rest of A–Z and 0–9 follows</string>
+    <string name="adfgvx_random_square">Generate random square</string>
+    <string name="adfgvx_square_title">Step 1 square</string>
+    <string name="adfgvx_transposition_label">Transposition keyword</string>
+    <string name="adfgvx_transposition_hint">Step 2 reads the columns in alphabetical order of this keyword</string>
+    <string name="adfgvx_plaintext_hint">Only letters A–Z and digits 0–9 are kept</string>
+    <string name="adfgvx_ciphertext_hint">Only the letters A, D, F, G, V and X are read</string>
+    <string name="adfgvx_error_ciphertext">Use an even number of the letters A, D, F, G, V and X</string>
+    <string name="adfgvx_fractionated_label">After step 1: each character as its row and column</string>
+</resources>

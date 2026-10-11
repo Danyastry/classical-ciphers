@@ -42,6 +42,7 @@ dependencies {
     implementation(projects.feature.scytale)
     implementation(projects.feature.bacon)
     implementation(projects.feature.polybius)
+    implementation(projects.feature.adfgvx)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
