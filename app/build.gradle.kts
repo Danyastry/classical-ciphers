@@ -29,6 +29,7 @@ dependencies {
 
     implementation(projects.feature.caesar)
     implementation(projects.feature.rot)
+    implementation(projects.feature.atbash)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
