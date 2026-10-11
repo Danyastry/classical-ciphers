@@ -1,0 +1,7 @@
+<resources>
+    <string name="columnar_keyword_hint">Columns are read in alphabetical order of the keyword letters</string>
+    <string name="columnar_pad_label">Pad with X</string>
+    <string name="columnar_pad_hint">Fill the last row so every column has the same length</string>
+    <string name="columnar_grid_title">Grid</string>
+    <string name="columnar_reading_order">Reading order: %1$s</string>
+</resources>
