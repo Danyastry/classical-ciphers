@@ -6,6 +6,7 @@ import com.danyastry.encryption.feature.atbash.AtbashFeature
 import com.danyastry.encryption.feature.autokey.AutokeyFeature
 import com.danyastry.encryption.feature.beaufort.BeaufortFeature
 import com.danyastry.encryption.feature.caesar.CaesarFeature
+import com.danyastry.encryption.feature.playfair.PlayfairFeature
 import com.danyastry.encryption.feature.rot.RotFeature
 import com.danyastry.encryption.feature.substitution.SubstitutionFeature
 import com.danyastry.encryption.feature.vigenere.VigenereFeature
@@ -20,5 +21,6 @@ object FeatureRegistry {
         VigenereFeature,
         BeaufortFeature,
         AutokeyFeature,
+        PlayfairFeature,
     )
 }

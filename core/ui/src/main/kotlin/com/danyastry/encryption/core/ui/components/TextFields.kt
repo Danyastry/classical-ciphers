@@ -16,12 +16,16 @@ fun CipherTextField(
     onValueChange: (String) -> Unit,
     label: String,
     modifier: Modifier = Modifier,
+    supportingText: String? = null,
+    isError: Boolean = false,
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(label) },
         minLines = 3,
+        isError = isError,
+        supportingText = supportingText?.let { { Text(it) } },
         modifier = modifier.fillMaxWidth(),
     )
 }
