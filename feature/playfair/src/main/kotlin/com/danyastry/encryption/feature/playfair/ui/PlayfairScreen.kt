@@ -31,7 +31,6 @@ import com.danyastry.encryption.core.ui.components.ResultCard
 import com.danyastry.encryption.core.ui.components.inputLabelRes
 import com.danyastry.encryption.core.ui.components.outputLabelRes
 import com.danyastry.encryption.core.ui.theme.EncryptionTheme
-import com.danyastry.encryption.feature.playfair.PlayfairKey
 import com.danyastry.encryption.feature.playfair.PlayfairRule
 import com.danyastry.encryption.feature.playfair.PlayfairStep
 import com.danyastry.encryption.feature.playfair.R
@@ -76,7 +75,7 @@ fun PlayfairScreen(
         )
         LetterTable(
             title = stringResource(R.string.playfair_square_title),
-            rows = state.square.chunked(PlayfairKey.SIZE).map { row ->
+            rows = state.square.chunked(SQUARE_SIZE).map { row ->
                 LetterRow.uniform(row.toList(), MaterialTheme.colorScheme.primary)
             },
         )
@@ -129,6 +128,8 @@ private fun PlayfairRule.labelRes(mode: CipherMode): Int = when (this) {
     PlayfairRule.SAME_COLUMN -> if (mode == CipherMode.ENCRYPT) R.string.playfair_rule_same_column_down else R.string.playfair_rule_same_column_up
     PlayfairRule.RECTANGLE -> R.string.playfair_rule_rectangle
 }
+
+private const val SQUARE_SIZE = 5
 
 @Preview(showBackground = true)
 @Composable

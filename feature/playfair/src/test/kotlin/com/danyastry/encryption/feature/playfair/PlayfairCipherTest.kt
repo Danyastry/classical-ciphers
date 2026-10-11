@@ -1,5 +1,6 @@
 package com.danyastry.encryption.feature.playfair
 
+import com.danyastry.encryption.core.classical.PolybiusSquare
 import com.google.common.truth.Truth.assertThat
 import org.junit.Assert.assertThrows
 import org.junit.Test
@@ -7,7 +8,31 @@ import org.junit.Test
 class PlayfairCipherTest {
 
     private val cipher = PlayfairCipher()
-    private val example = PlayfairKey("playfair example")
+    private val example = PolybiusSquare.fromKeyword("playfair example")
+
+    @Test
+    fun `builds the reference squares`() {
+        assertThat(example.letters).isEqualTo("PLAYFIREXMBCDGHKNOQSTUVWZ")
+        assertThat(PolybiusSquare.fromKeyword("MONARCHY").letters).isEqualTo("MONARCHYBDEFGIKLPQSTUVWXZ")
+    }
+
+    @Test
+    fun `every keyword gives 25 distinct letters without J`() {
+        listOf("", "JJJ", "playfair example", "The quick brown fox jumps over the lazy dog").forEach { keyword ->
+            val letters = PolybiusSquare.fromKeyword(keyword).letters
+
+            assertThat(letters).hasLength(25)
+            assertThat(letters.toSet()).hasSize(25)
+            assertThat(letters).doesNotContain("J")
+        }
+    }
+
+    @Test
+    fun `rejects squares that are not the 25 letter latin square`() {
+        val alphanumeric = PolybiusSquare.fromKeyword(alphabet = PolybiusSquare.ALPHANUMERIC_36)
+
+        assertThrows(IllegalArgumentException::class.java) { cipher.encrypt("HELLO", alphanumeric) }
+    }
 
     @Test
     fun `matches the wikipedia example`() {
@@ -17,13 +42,13 @@ class PlayfairCipherTest {
 
     @Test
     fun `matches the textbook example`() {
-        assertThat(cipher.encrypt("balloon", PlayfairKey("monarchy"))).isEqualTo("IBSUPMNA")
+        assertThat(cipher.encrypt("balloon", PolybiusSquare.fromKeyword("monarchy"))).isEqualTo("IBSUPMNA")
     }
 
     @Test
     fun `decrypts back to the prepared plaintext with fillers`() {
         assertThat(cipher.decrypt("BMODZBXDNABEKUDMUIXMMOUVIF", example)).isEqualTo("HIDETHEGOLDINTHETREXESTUMP")
-        assertThat(cipher.decrypt("IB SU PM NA", PlayfairKey("monarchy"))).isEqualTo("BALXLOON")
+        assertThat(cipher.decrypt("IB SU PM NA", PolybiusSquare.fromKeyword("monarchy"))).isEqualTo("BALXLOON")
     }
 
     @Test
@@ -92,7 +117,7 @@ class PlayfairCipherTest {
         val text = "ATTACKATDAWN".let { cipher.digraphs(it).joinToString("") }
 
         listOf("", "monarchy", "playfair example", "keyword").forEach { keyword ->
-            val key = PlayfairKey(keyword)
+            val key = PolybiusSquare.fromKeyword(keyword)
             assertThat(cipher.decrypt(cipher.encrypt(text, key), key)).isEqualTo(text)
         }
     }
