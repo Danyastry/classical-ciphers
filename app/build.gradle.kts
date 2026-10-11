@@ -33,6 +33,7 @@ dependencies {
     implementation(projects.feature.affine)
     implementation(projects.feature.substitution)
     implementation(projects.feature.vigenere)
+    implementation(projects.feature.beaufort)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
