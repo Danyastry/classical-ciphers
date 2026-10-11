@@ -31,6 +31,7 @@ dependencies {
     implementation(projects.feature.rot)
     implementation(projects.feature.atbash)
     implementation(projects.feature.affine)
+    implementation(projects.feature.substitution)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
