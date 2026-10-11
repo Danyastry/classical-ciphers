@@ -27,6 +27,7 @@ val AlgorithmCategory.titleRes: Int
 val SecurityStatus.labelRes: Int
     get() = when (this) {
         SecurityStatus.RECOMMENDED -> R.string.status_recommended
+        SecurityStatus.PERFECT_SECRECY -> R.string.status_perfect_secrecy
         SecurityStatus.LEGACY -> R.string.status_legacy
         SecurityStatus.BROKEN -> R.string.status_broken
         SecurityStatus.NO_SECURITY -> R.string.status_no_security

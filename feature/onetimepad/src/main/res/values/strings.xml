@@ -1,0 +1,12 @@
+<resources>
+    <string name="otp_description">Each letter is shifted by its own key letter, like Vigenère with a key that never repeats. With a truly random key used only once, the ciphertext reveals nothing about the message.</string>
+    <string name="otp_key_label">Key</string>
+    <string name="otp_key_hint">Message letters: %1$d, key letters: %2$d. Never reuse a key.</string>
+    <string name="otp_key_too_short">Message letters: %1$d, key letters: %2$d. The key must be at least as long as the message.</string>
+    <string name="otp_generate_key">Generate random key for this message</string>
+    <string name="otp_secrecy_title">Why it cannot be broken</string>
+    <string name="otp_secrecy_hint">Every message of the same length is possible: for any guess there is a key that turns this ciphertext into it.</string>
+    <string name="otp_secrecy_label">Pretend the message was</string>
+    <string name="otp_secrecy_length_mismatch">Letter count must match the ciphertext: %1$d</string>
+    <string name="otp_secrecy_result">Key that decrypts the ciphertext to it</string>
+</resources>
