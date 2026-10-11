@@ -13,9 +13,9 @@ object SubstitutionFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "simple-substitution",
         name = "Simple substitution",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.SUBSTITUTION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Replaces every letter using a shuffled alphabet as the key",
+        summary = "A shuffled alphabet is the key",
     )
 
     @Composable

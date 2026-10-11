@@ -10,7 +10,7 @@ class AffineFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(AffineFeature.info.id).isEqualTo("affine")
-        assertThat(AffineFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(AffineFeature.info.category).isEqualTo(AlgorithmCategory.SUBSTITUTION)
         assertThat(AffineFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

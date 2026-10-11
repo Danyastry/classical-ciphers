@@ -13,9 +13,9 @@ object CaesarFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "caesar",
         name = "Caesar cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.SUBSTITUTION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Shifts every letter by a fixed number of positions",
+        summary = "Shifts every letter by N",
     )
 
     @Composable

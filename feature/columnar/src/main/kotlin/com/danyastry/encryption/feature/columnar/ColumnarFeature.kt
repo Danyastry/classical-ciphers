@@ -13,9 +13,9 @@ object ColumnarFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "columnar-transposition",
         name = "Columnar transposition",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TRANSPOSITION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Writes the text in rows and reads the columns in keyword order",
+        summary = "Columns read in keyword order",
     )
 
     @Composable

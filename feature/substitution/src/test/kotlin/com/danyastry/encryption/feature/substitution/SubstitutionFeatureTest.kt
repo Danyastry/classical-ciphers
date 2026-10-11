@@ -10,7 +10,7 @@ class SubstitutionFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(SubstitutionFeature.info.id).isEqualTo("simple-substitution")
-        assertThat(SubstitutionFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(SubstitutionFeature.info.category).isEqualTo(AlgorithmCategory.SUBSTITUTION)
         assertThat(SubstitutionFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

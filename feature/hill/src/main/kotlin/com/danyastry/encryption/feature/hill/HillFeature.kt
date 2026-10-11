@@ -13,9 +13,9 @@ object HillFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "hill",
         name = "Hill cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TABLE_BASED,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Multiplies blocks of letters by a key matrix modulo 26",
+        summary = "Letter blocks times a key matrix",
     )
 
     @Composable

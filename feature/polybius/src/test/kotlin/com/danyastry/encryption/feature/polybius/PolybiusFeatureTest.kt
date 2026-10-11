@@ -10,7 +10,7 @@ class PolybiusFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(PolybiusFeature.info.id).isEqualTo("polybius-square")
-        assertThat(PolybiusFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(PolybiusFeature.info.category).isEqualTo(AlgorithmCategory.TABLE_BASED)
         assertThat(PolybiusFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

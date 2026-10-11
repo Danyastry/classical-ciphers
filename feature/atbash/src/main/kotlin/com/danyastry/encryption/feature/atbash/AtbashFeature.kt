@@ -13,9 +13,9 @@ object AtbashFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "atbash",
         name = "Atbash cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.SUBSTITUTION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Mirrors the alphabet so A becomes Z and Z becomes A",
+        summary = "Reversed alphabet: A=Z, B=Y",
     )
 
     @Composable

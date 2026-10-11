@@ -13,9 +13,9 @@ object BaconFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "bacon",
         name = "Bacon's cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.SUBSTITUTION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Encodes each letter as five A/B symbols that can be hidden in ordinary text",
+        summary = "Each letter as five A/B symbols",
     )
 
     @Composable

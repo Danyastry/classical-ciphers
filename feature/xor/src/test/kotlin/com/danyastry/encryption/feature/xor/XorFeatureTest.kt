@@ -10,7 +10,7 @@ class XorFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(XorFeature.info.id).isEqualTo("xor")
-        assertThat(XorFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(XorFeature.info.category).isEqualTo(AlgorithmCategory.POLYALPHABETIC)
         assertThat(XorFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

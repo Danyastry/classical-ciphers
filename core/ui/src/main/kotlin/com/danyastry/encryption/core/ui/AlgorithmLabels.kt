@@ -7,20 +7,21 @@ import com.danyastry.encryption.core.cryptoapi.SecurityStatus
 @get:StringRes
 val AlgorithmCategory.titleRes: Int
     get() = when (this) {
-        AlgorithmCategory.CLASSICAL -> R.string.category_classical
-        AlgorithmCategory.ENCODING -> R.string.category_encoding
-        AlgorithmCategory.SYMMETRIC -> R.string.category_symmetric
-        AlgorithmCategory.STREAM -> R.string.category_stream
-        AlgorithmCategory.ASYMMETRIC -> R.string.category_asymmetric
-        AlgorithmCategory.KEY_EXCHANGE -> R.string.category_key_exchange
-        AlgorithmCategory.SIGNATURE -> R.string.category_signature
-        AlgorithmCategory.HASH -> R.string.category_hash
-        AlgorithmCategory.MAC -> R.string.category_mac
-        AlgorithmCategory.KDF -> R.string.category_kdf
-        AlgorithmCategory.ANDROID_PLATFORM -> R.string.category_android_platform
-        AlgorithmCategory.PROTOCOL -> R.string.category_protocol
-        AlgorithmCategory.ADVANCED -> R.string.category_advanced
-        AlgorithmCategory.CRYPTANALYSIS -> R.string.category_cryptanalysis
+        AlgorithmCategory.SUBSTITUTION -> R.string.category_substitution
+        AlgorithmCategory.POLYALPHABETIC -> R.string.category_polyalphabetic
+        AlgorithmCategory.TRANSPOSITION -> R.string.category_transposition
+        AlgorithmCategory.TABLE_BASED -> R.string.category_table_based
+        AlgorithmCategory.MACHINE -> R.string.category_machine
+    }
+
+@get:StringRes
+val AlgorithmCategory.descriptionRes: Int
+    get() = when (this) {
+        AlgorithmCategory.SUBSTITUTION -> R.string.category_substitution_description
+        AlgorithmCategory.POLYALPHABETIC -> R.string.category_polyalphabetic_description
+        AlgorithmCategory.TRANSPOSITION -> R.string.category_transposition_description
+        AlgorithmCategory.TABLE_BASED -> R.string.category_table_based_description
+        AlgorithmCategory.MACHINE -> R.string.category_machine_description
     }
 
 @get:StringRes
@@ -31,4 +32,14 @@ val SecurityStatus.labelRes: Int
         SecurityStatus.LEGACY -> R.string.status_legacy
         SecurityStatus.BROKEN -> R.string.status_broken
         SecurityStatus.NO_SECURITY -> R.string.status_no_security
+    }
+
+@get:StringRes
+val SecurityStatus.descriptionRes: Int
+    get() = when (this) {
+        SecurityStatus.RECOMMENDED -> R.string.status_recommended_description
+        SecurityStatus.PERFECT_SECRECY -> R.string.status_perfect_secrecy_description
+        SecurityStatus.LEGACY -> R.string.status_legacy_description
+        SecurityStatus.BROKEN -> R.string.status_broken_description
+        SecurityStatus.NO_SECURITY -> R.string.status_no_security_description
     }

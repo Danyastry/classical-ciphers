@@ -13,9 +13,9 @@ object XorFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "xor",
         name = "XOR cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.POLYALPHABETIC,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "XORs every byte with a repeating key; one known word reveals the key",
+        summary = "Bytes XORed with a repeating key",
     )
 
     @Composable

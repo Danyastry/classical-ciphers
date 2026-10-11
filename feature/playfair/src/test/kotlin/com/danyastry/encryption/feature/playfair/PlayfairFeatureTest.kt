@@ -10,7 +10,7 @@ class PlayfairFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(PlayfairFeature.info.id).isEqualTo("playfair")
-        assertThat(PlayfairFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(PlayfairFeature.info.category).isEqualTo(AlgorithmCategory.TABLE_BASED)
         assertThat(PlayfairFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

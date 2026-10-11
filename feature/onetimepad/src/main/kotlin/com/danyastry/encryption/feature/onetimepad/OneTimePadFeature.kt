@@ -13,9 +13,9 @@ object OneTimePadFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "one-time-pad",
         name = "One-time pad",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.POLYALPHABETIC,
         securityStatus = SecurityStatus.PERFECT_SECRECY,
-        summary = "Unbreakable when the key is truly random, as long as the message and never reused",
+        summary = "Random key as long as the text",
     )
 
     @Composable

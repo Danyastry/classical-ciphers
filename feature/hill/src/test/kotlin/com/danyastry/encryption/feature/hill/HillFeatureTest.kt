@@ -10,7 +10,7 @@ class HillFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(HillFeature.info.id).isEqualTo("hill")
-        assertThat(HillFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(HillFeature.info.category).isEqualTo(AlgorithmCategory.TABLE_BASED)
         assertThat(HillFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

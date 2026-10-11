@@ -13,9 +13,9 @@ object AffineFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "affine",
         name = "Affine cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.SUBSTITUTION,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Maps every letter x to (a·x + b) mod 26",
+        summary = "(a·x + b) mod 26",
     )
 
     @Composable

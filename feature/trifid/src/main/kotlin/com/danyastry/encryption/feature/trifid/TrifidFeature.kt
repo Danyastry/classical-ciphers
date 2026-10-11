@@ -13,9 +13,9 @@ object TrifidFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "trifid",
         name = "Trifid cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TABLE_BASED,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Bifid in three dimensions: letters become layer, row and column in a 3×3×3 cube",
+        summary = "Bifid in a 3×3×3 cube",
     )
 
     @Composable

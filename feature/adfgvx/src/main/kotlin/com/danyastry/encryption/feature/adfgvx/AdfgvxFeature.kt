@@ -13,9 +13,9 @@ object AdfgvxFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "adfgvx",
         name = "ADFGVX cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TABLE_BASED,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "WWI German field cipher: a 6×6 square followed by a columnar transposition",
+        summary = "6×6 square plus transposition",
     )
 
     @Composable

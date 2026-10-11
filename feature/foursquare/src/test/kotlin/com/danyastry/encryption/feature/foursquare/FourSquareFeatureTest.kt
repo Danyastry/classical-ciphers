@@ -10,7 +10,7 @@ class FourSquareFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(FourSquareFeature.info.id).isEqualTo("four-square")
-        assertThat(FourSquareFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(FourSquareFeature.info.category).isEqualTo(AlgorithmCategory.TABLE_BASED)
         assertThat(FourSquareFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

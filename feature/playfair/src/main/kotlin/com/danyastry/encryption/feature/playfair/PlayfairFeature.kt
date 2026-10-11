@@ -13,9 +13,9 @@ object PlayfairFeature : FeatureEntry {
     override val info = AlgorithmInfo(
         id = "playfair",
         name = "Playfair cipher",
-        category = AlgorithmCategory.CLASSICAL,
+        category = AlgorithmCategory.TABLE_BASED,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Encrypts pairs of letters using a 5×5 square built from a keyword",
+        summary = "Letter pairs in a 5×5 square",
     )
 
     @Composable

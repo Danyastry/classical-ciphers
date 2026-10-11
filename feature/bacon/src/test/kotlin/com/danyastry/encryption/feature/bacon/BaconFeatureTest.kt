@@ -10,7 +10,7 @@ class BaconFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(BaconFeature.info.id).isEqualTo("bacon")
-        assertThat(BaconFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(BaconFeature.info.category).isEqualTo(AlgorithmCategory.SUBSTITUTION)
         assertThat(BaconFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }

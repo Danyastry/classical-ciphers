@@ -10,7 +10,7 @@ class AtbashFeatureTest {
     @Test
     fun `is listed as a broken classical cipher`() {
         assertThat(AtbashFeature.info.id).isEqualTo("atbash")
-        assertThat(AtbashFeature.info.category).isEqualTo(AlgorithmCategory.CLASSICAL)
+        assertThat(AtbashFeature.info.category).isEqualTo(AlgorithmCategory.SUBSTITUTION)
         assertThat(AtbashFeature.info.securityStatus).isEqualTo(SecurityStatus.BROKEN)
     }
 }
