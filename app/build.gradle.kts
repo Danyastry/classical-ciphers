@@ -49,6 +49,7 @@ dependencies {
     implementation(projects.feature.twosquare)
     implementation(projects.feature.enigma)
     implementation(projects.feature.onetimepad)
+    implementation(projects.feature.xor)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)

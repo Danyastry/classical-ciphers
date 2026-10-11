@@ -1,0 +1,18 @@
+<resources>
+    <string name="xor_encoding_hex">Hex</string>
+    <string name="xor_encoding_base64">Base64</string>
+    <string name="xor_key_format_text">Key as text</string>
+    <string name="xor_key_format_hex">Key as hex</string>
+    <string name="xor_key_label">Key</string>
+    <string name="xor_key_hint">The key repeats over the whole message, byte by byte</string>
+    <string name="xor_error_key_empty">The key must not be empty</string>
+    <string name="xor_error_key_hex">Use pairs of hex digits 0–9 and a–f</string>
+    <string name="xor_input_hint_hex">Paste the ciphertext as hex</string>
+    <string name="xor_input_hint_base64">Paste the ciphertext as Base64</string>
+    <string name="xor_error_hex">This is not valid hex: use pairs of digits 0–9 and a–f</string>
+    <string name="xor_error_base64">This is not valid Base64</string>
+    <string name="xor_attack_title">Known-plaintext attack</string>
+    <string name="xor_attack_hint">Ciphertext XOR plaintext gives the key. Guess how the message starts and watch the key appear.</string>
+    <string name="xor_attack_crib">Guessed start of the message</string>
+    <string name="xor_attack_result">Recovered key bytes</string>
+</resources>

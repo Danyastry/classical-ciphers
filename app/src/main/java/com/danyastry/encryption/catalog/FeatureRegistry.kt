@@ -23,6 +23,7 @@ import com.danyastry.encryption.feature.substitution.SubstitutionFeature
 import com.danyastry.encryption.feature.trifid.TrifidFeature
 import com.danyastry.encryption.feature.twosquare.TwoSquareFeature
 import com.danyastry.encryption.feature.vigenere.VigenereFeature
+import com.danyastry.encryption.feature.xor.XorFeature
 
 object FeatureRegistry {
     val features: List<FeatureEntry> = listOf(
@@ -48,5 +49,6 @@ object FeatureRegistry {
         TwoSquareFeature,
         EnigmaFeature,
         OneTimePadFeature,
+        XorFeature,
     )
 }
