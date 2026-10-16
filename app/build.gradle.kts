@@ -50,6 +50,7 @@ dependencies {
     implementation(projects.feature.enigma)
     implementation(projects.feature.onetimepad)
     implementation(projects.feature.xor)
+    implementation(projects.feature.cpp)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)

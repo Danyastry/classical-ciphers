@@ -12,6 +12,7 @@ val AlgorithmCategory.titleRes: Int
         AlgorithmCategory.TRANSPOSITION -> R.string.category_transposition
         AlgorithmCategory.TABLE_BASED -> R.string.category_table_based
         AlgorithmCategory.MACHINE -> R.string.category_machine
+        AlgorithmCategory.NATIVE -> R.string.category_native
     }
 
 @get:StringRes
@@ -22,6 +23,7 @@ val AlgorithmCategory.descriptionRes: Int
         AlgorithmCategory.TRANSPOSITION -> R.string.category_transposition_description
         AlgorithmCategory.TABLE_BASED -> R.string.category_table_based_description
         AlgorithmCategory.MACHINE -> R.string.category_machine_description
+        AlgorithmCategory.NATIVE -> R.string.category_native_description
     }
 
 @get:StringRes

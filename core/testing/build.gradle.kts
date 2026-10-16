@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
     api(projects.core.cryptoApi)
+    api(projects.core.classical)
     api(libs.junit)
     api(libs.truth)
 }

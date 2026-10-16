@@ -4,11 +4,13 @@
     <string name="category_transposition">Transposition</string>
     <string name="category_table_based">Squares and matrices</string>
     <string name="category_machine">Machines</string>
+    <string name="category_native">Native code</string>
     <string name="category_substitution_description">Each letter always becomes the same letter</string>
     <string name="category_polyalphabetic_description">The key decides how each letter changes</string>
     <string name="category_transposition_description">Same letters, new order</string>
     <string name="category_table_based_description">Letters are looked up in a grid</string>
     <string name="category_machine_description">Rotor machines</string>
+    <string name="category_native_description">The same ciphers in C++ through JNI, checked and timed against Kotlin</string>
 
     <string name="status_recommended">Recommended</string>
     <string name="status_perfect_secrecy">Perfect secrecy</string>
