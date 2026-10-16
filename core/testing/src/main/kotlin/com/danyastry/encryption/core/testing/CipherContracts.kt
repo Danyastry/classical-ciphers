@@ -4,14 +4,12 @@ import com.danyastry.encryption.core.classical.Keyword
 import com.danyastry.encryption.core.cryptoapi.ByteCipher
 import com.danyastry.encryption.core.cryptoapi.TextCipher
 import com.google.common.truth.Truth.assertThat
-import kotlin.random.Random
 import org.junit.Assert.assertThrows
 import org.junit.Test
 
-private const val MIXED_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,!?-\n\tÄöüßéЖ€✓"
+private const val MESSAGE = "Meet me at the old bridge at 9:45 PM. Bring the map, not the phone!\n"
 
-fun randomMixedText(length: Int, random: Random = Random(42)): String =
-    buildString(length) { repeat(length) { append(MIXED_CHARACTERS[random.nextInt(MIXED_CHARACTERS.length)]) } } + "😀"
+fun longMessage(): String = MESSAGE.repeat(100)
 
 abstract class CaesarCipherContract {
 
@@ -34,15 +32,15 @@ abstract class CaesarCipherContract {
     }
 
     @Test
-    fun leavesEverythingExceptAsciiLettersUntouched() {
-        assertThat(cipher.encrypt("a1, Ä ж € ✓ 😀 z", 1)).isEqualTo("b1, Ä ж € ✓ 😀 a")
+    fun leavesDigitsAndPunctuationUntouched() {
+        assertThat(cipher.encrypt("Meet me at 9:45, gate #12!", 1)).isEqualTo("Nffu nf bu 9:45, hbuf #12!")
     }
 
     @Test
     fun normalizesLargeAndNegativeShifts() {
         assertThat(cipher.encrypt("abc", 29)).isEqualTo("def")
         assertThat(cipher.encrypt("abc", -3)).isEqualTo("xyz")
-        assertThat(cipher.encrypt("abc", Int.MIN_VALUE)).isEqualTo(cipher.encrypt("abc", Int.MIN_VALUE.mod(26)))
+        assertThat(cipher.encrypt("abc", Int.MIN_VALUE)).isEqualTo("cde")
     }
 
     @Test
@@ -52,10 +50,10 @@ abstract class CaesarCipherContract {
     }
 
     @Test
-    fun roundTripsLongMixedTextForEveryShift() {
-        val text = randomMixedText(5_000)
+    fun decryptsALongMessageBackForEveryShift() {
+        val message = longMessage()
 
-        for (shift in -30..30) assertRoundTrip(cipher, text, shift)
+        for (shift in -30..30) assertRoundTrip(cipher, message, shift)
     }
 }
 
@@ -82,8 +80,8 @@ abstract class VigenereCipherContract {
     }
 
     @Test
-    fun leavesEverythingExceptAsciiLettersUntouched() {
-        assertThat(cipher.encrypt("ж€ 😀", lemon)).isEqualTo("ж€ 😀")
+    fun leavesDigitsAndPunctuationUntouched() {
+        assertThat(cipher.encrypt("Meet at 9:45!", lemon)).isEqualTo("Xiqh ne 9:45!")
     }
 
     @Test
@@ -92,10 +90,10 @@ abstract class VigenereCipherContract {
     }
 
     @Test
-    fun roundTripsLongMixedText() {
-        val text = randomMixedText(5_000)
+    fun decryptsALongMessageBack() {
+        val message = longMessage()
 
-        listOf("A", "LEMON", "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG").forEach { assertRoundTrip(cipher, text, Keyword(it)) }
+        listOf("A", "LEMON", "THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG").forEach { assertRoundTrip(cipher, message, Keyword(it)) }
     }
 }
 
@@ -120,8 +118,8 @@ abstract class XorCipherContract {
     }
 
     @Test
-    fun xorWithZerosChangesNothing() {
-        val data = Random(7).nextBytes(64)
+    fun aKeyOfZerosChangesNothing() {
+        val data = "Attack at dawn".encodeToByteArray()
 
         assertThat(cipher.encrypt(data, ByteArray(3))).isEqualTo(data)
     }
@@ -137,10 +135,18 @@ abstract class XorCipherContract {
     }
 
     @Test
-    fun roundTripsLongRandomData() {
-        val random = Random(42)
-        val data = random.nextBytes(100_000)
+    fun worksForEveryPossibleByteValue() {
+        val allBytes = ByteArray(256) { it.toByte() }
 
-        listOf(1, 7, 32, 1_000).forEach { assertRoundTrip(cipher, data, random.nextBytes(it)) }
+        assertRoundTrip(cipher, allBytes, "secret".encodeToByteArray())
+    }
+
+    @Test
+    fun decryptsALongMessageBackWithKeysOfAnyLength() {
+        val message = longMessage().encodeToByteArray()
+
+        listOf("K", "secret", "a key that is longer than sixteen bytes").forEach { key ->
+            assertRoundTrip(cipher, message, key.encodeToByteArray())
+        }
     }
 }

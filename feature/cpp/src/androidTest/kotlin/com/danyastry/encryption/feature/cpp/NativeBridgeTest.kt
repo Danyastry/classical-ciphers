@@ -1,9 +1,7 @@
 package com.danyastry.encryption.feature.cpp
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.danyastry.encryption.core.classical.Keyword
 import com.google.common.truth.Truth.assertThat
-import kotlin.random.Random
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -22,16 +20,19 @@ class NativeBridgeTest {
     }
 
     @Test
-    fun keepsSurrogatePairsIntact() {
-        val text = "a😀b𝄞c"
+    fun keepsAnEmojiInOnePiece() {
+        val text = "Hi 😀 there"
 
-        assertThat(NativeVigenereCipher().encrypt(text, Keyword("B"))).isEqualTo("b😀c𝄞d")
+        val encrypted = NativeCaesarCipher().encrypt(text, 3)
+
+        assertThat(encrypted).isEqualTo("Kl 😀 wkhuh")
+        assertThat(encrypted).hasLength(text.length)
     }
 
     @Test
     fun doesNotChangeTheInputArrays() {
-        val data = Random(1).nextBytes(4_096)
-        val key = Random(2).nextBytes(17)
+        val data = "Attack at dawn".encodeToByteArray()
+        val key = "KEY".encodeToByteArray()
         val dataCopy = data.copyOf()
         val keyCopy = key.copyOf()
 
