@@ -1,0 +1,25 @@
+<resources>
+    <string name="cpp_intro">The same three ciphers written in C++, built with CMake and called through JNI. Shared tests prove both versions give the same output.</string>
+    <string name="cpp_abi">Native library built for: %1$s</string>
+    <string name="cpp_cipher_caesar">Caesar</string>
+    <string name="cpp_cipher_vigenere">Vigenère</string>
+    <string name="cpp_cipher_xor">XOR</string>
+    <string name="cpp_size_small">1 KB</string>
+    <string name="cpp_size_medium">64 KB</string>
+    <string name="cpp_size_large">1 MB</string>
+    <string name="cpp_compare_title">Big input</string>
+    <string name="cpp_compare_hint">Median time. Runs: %1$d, warm-up: %2$d</string>
+    <string name="cpp_compare">Run both</string>
+    <string name="cpp_running">Running…</string>
+    <string name="cpp_kotlin_time">Kotlin: %1$s</string>
+    <string name="cpp_cpp_time">C++: %1$s</string>
+    <string name="cpp_cpp_faster">C++ is %1$s× faster</string>
+    <string name="cpp_kotlin_faster">Kotlin is %1$s× faster</string>
+    <string name="cpp_about_the_same">About the same speed</string>
+    <string name="cpp_outputs_match">Both gave exactly the same output</string>
+    <string name="cpp_outputs_differ">The outputs differ</string>
+    <string name="cpp_overhead_title">Many tiny calls</string>
+    <string name="cpp_overhead_hint">Caesar on a %1$d-character string, called %2$d×. Every JNI call pays a fixed cost to cross into native code and copy the string in and out. Compare with the big input: on tiny inputs that cost eats most of the C++ lead.</string>
+    <string name="cpp_overhead">Measure call cost</string>
+    <string name="cpp_note">Numbers depend on the device. An emulator is only a rough guide.</string>
+</resources>

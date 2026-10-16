@@ -8,8 +8,11 @@ import com.danyastry.encryption.feature.autokey.AutokeyFeature
 import com.danyastry.encryption.feature.bacon.BaconFeature
 import com.danyastry.encryption.feature.beaufort.BeaufortFeature
 import com.danyastry.encryption.feature.bifid.BifidFeature
+import com.danyastry.encryption.feature.caesar.CaesarCipher
 import com.danyastry.encryption.feature.caesar.CaesarFeature
 import com.danyastry.encryption.feature.columnar.ColumnarFeature
+import com.danyastry.encryption.feature.cpp.CipherSet
+import com.danyastry.encryption.feature.cpp.CppFeature
 import com.danyastry.encryption.feature.enigma.EnigmaFeature
 import com.danyastry.encryption.feature.foursquare.FourSquareFeature
 import com.danyastry.encryption.feature.hill.HillFeature
@@ -22,7 +25,9 @@ import com.danyastry.encryption.feature.scytale.ScytaleFeature
 import com.danyastry.encryption.feature.substitution.SubstitutionFeature
 import com.danyastry.encryption.feature.trifid.TrifidFeature
 import com.danyastry.encryption.feature.twosquare.TwoSquareFeature
+import com.danyastry.encryption.feature.vigenere.VigenereCipher
 import com.danyastry.encryption.feature.vigenere.VigenereFeature
+import com.danyastry.encryption.feature.xor.XorCipher
 import com.danyastry.encryption.feature.xor.XorFeature
 
 object FeatureRegistry {
@@ -50,5 +55,6 @@ object FeatureRegistry {
         EnigmaFeature,
         OneTimePadFeature,
         XorFeature,
+        CppFeature(CipherSet(caesar = CaesarCipher(), vigenere = VigenereCipher(), xor = XorCipher())),
     )
 }

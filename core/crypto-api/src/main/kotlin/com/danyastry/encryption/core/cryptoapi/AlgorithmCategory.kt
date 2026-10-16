@@ -6,4 +6,5 @@ enum class AlgorithmCategory {
     TRANSPOSITION,
     TABLE_BASED,
     MACHINE,
+    NATIVE,
 }
