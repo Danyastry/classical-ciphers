@@ -37,7 +37,7 @@ class FeatureCatalogTest {
 
     @Test
     fun `sorts features inside a section by name`() {
-        val vigenere = feature("vigenere", "Vigenère", AlgorithmCategory.SUBSTITUTION)
+        val vigenere = feature("vigenere", "Vigenere", AlgorithmCategory.SUBSTITUTION)
         val atbash = feature("atbash", "Atbash", AlgorithmCategory.SUBSTITUTION)
         val caesar = feature("caesar", "Caesar", AlgorithmCategory.SUBSTITUTION)
 

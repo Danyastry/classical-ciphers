@@ -12,7 +12,7 @@ object VigenereFeature : FeatureEntry {
 
     override val info = AlgorithmInfo(
         id = "vigenere",
-        name = "Vigenère cipher",
+        name = "Vigenere cipher",
         category = AlgorithmCategory.POLYALPHABETIC,
         securityStatus = SecurityStatus.BROKEN,
         summary = "Caesar shifts taken from a keyword",

@@ -14,7 +14,7 @@ class AlphabetTest {
     @Test
     fun `recognizes ascii letters only`() {
         assertThat("aZmM".all { it.isAsciiLetter() }).isTrue()
-        assertThat(" 1!é".any { it.isAsciiLetter() }).isFalse()
+        assertThat(" 1!\u00E9".any { it.isAsciiLetter() }).isFalse()
     }
 
     @Test
@@ -38,9 +38,9 @@ class AlphabetTest {
     fun `mapLetters leaves non letters untouched and skips them`() {
         val visited = mutableListOf<Int>()
 
-        val result = "a, b! 1é".mapLetters { index -> visited += index; index }
+        val result = "a, b! 1\u00E9".mapLetters { index -> visited += index; index }
 
-        assertThat(result).isEqualTo("a, b! 1é")
+        assertThat(result).isEqualTo("a, b! 1\u00E9")
         assertThat(visited).containsExactly(0, 1).inOrder()
     }
 }
