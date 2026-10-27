@@ -85,10 +85,10 @@ class XorViewModelTest {
     @Test
     fun `round trips unicode text through base64`() {
         viewModel.onEncodingChange(ByteEncoding.BASE64)
-        viewModel.onInputChange("Emoji ✓ and ümlauts")
+        viewModel.onInputChange("Price \u00A3 5 and \u20AC 6")
 
         viewModel.onUseOutputAsInput()
 
-        assertThat(state.output).isEqualTo("Emoji ✓ and ümlauts")
+        assertThat(state.output).isEqualTo("Price \u00A3 5 and \u20AC 6")
     }
 }

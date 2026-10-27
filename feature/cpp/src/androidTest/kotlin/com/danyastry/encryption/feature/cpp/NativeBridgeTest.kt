@@ -20,12 +20,12 @@ class NativeBridgeTest {
     }
 
     @Test
-    fun keepsAnEmojiInOnePiece() {
-        val text = "Hi 😀 there"
+    fun keepsACharacterOutsideTheBasicPlaneInOnePiece() {
+        val text = "Hi \uD835\uDD38 there"
 
         val encrypted = NativeCaesarCipher().encrypt(text, 3)
 
-        assertThat(encrypted).isEqualTo("Kl 😀 wkhuh")
+        assertThat(encrypted).isEqualTo("Kl \uD835\uDD38 wkhuh")
         assertThat(encrypted).hasLength(text.length)
     }
 

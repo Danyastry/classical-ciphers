@@ -2,7 +2,7 @@
     <string name="cpp_intro">The same three ciphers written in C++, built with CMake and called through JNI. Shared tests prove both versions give the same output.</string>
     <string name="cpp_abi">Native library built for: %1$s</string>
     <string name="cpp_cipher_caesar">Caesar</string>
-    <string name="cpp_cipher_vigenere">Vigenère</string>
+    <string name="cpp_cipher_vigenere">Vigenere</string>
     <string name="cpp_cipher_xor">XOR</string>
     <string name="cpp_size_small">1 KB</string>
     <string name="cpp_size_medium">64 KB</string>

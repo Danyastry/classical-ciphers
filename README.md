@@ -7,12 +7,12 @@
 | Family | Ciphers |
 |---|---|
 | Substitution | Caesar, ROT13/ROT47, Atbash, Affine, Simple substitution, Bacon |
-| Polyalphabetic | Vigenère, Beaufort, Autokey, One-time pad, XOR |
+| Polyalphabetic | Vigenere, Beaufort, Autokey, One-time pad, XOR |
 | Transposition | Rail fence, Columnar, Scytale |
 | Squares and matrices | Polybius, Playfair, Two-square, Four-square, Bifid, Trifid, ADFGVX, Hill |
 | Machines | Enigma I |
 
-Caesar and Simple substitution can be cracked with frequency analysis, Vigenère with the Kasiski method.
+Caesar and Simple substitution can be cracked with frequency analysis, Vigenere with the Kasiski method.
 
 ## Screenshots
 
@@ -46,7 +46,7 @@ Caesar and Simple substitution can be cracked with frequency analysis, Vigenère
 
 ### Polyalphabetic
 
-- **Vigenère** – cracked with the Kasiski method
+- **Vigenere** – cracked with the Kasiski method
 
   <img src="docs/screenshots/vigenere-1.png" width="240"> <img src="docs/screenshots/vigenere-2.png" width="240">
 

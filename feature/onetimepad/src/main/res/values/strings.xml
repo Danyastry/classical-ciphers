@@ -1,5 +1,5 @@
 <resources>
-    <string name="otp_description">Each letter is shifted by its own key letter, like Vigenère with a key that never repeats. With a truly random key used only once, the ciphertext reveals nothing about the message.</string>
+    <string name="otp_description">Each letter is shifted by its own key letter, like Vigenere with a key that never repeats. With a truly random key used only once, the ciphertext reveals nothing about the message.</string>
     <string name="otp_key_label">Key</string>
     <string name="otp_key_hint">Message letters: %1$d, key letters: %2$d. Never reuse a key.</string>
     <string name="otp_key_too_short">Message letters: %1$d, key letters: %2$d. The key must be at least as long as the message.</string>

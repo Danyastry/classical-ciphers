@@ -15,7 +15,7 @@ class CppFeature(private val kotlinCiphers: CipherSet) : FeatureEntry {
         name = "C++ vs Kotlin",
         category = AlgorithmCategory.NATIVE,
         securityStatus = SecurityStatus.BROKEN,
-        summary = "Caesar, Vigenère and XOR in C++ through JNI, timed against Kotlin",
+        summary = "Caesar, Vigenere and XOR in C++ through JNI, timed against Kotlin",
     )
 
     @Composable
